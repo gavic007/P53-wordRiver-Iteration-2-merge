@@ -509,31 +509,38 @@ Student.find({}).remove(function() {
   Student.create(
     {
       "firstName": "Liza",
-      "lastName": "Pratt"
+      "lastName": "Pratt",
+      "id": "0001"
     },
     {
       "firstName": "Battle",
-      "lastName": "Whitaker"
+      "lastName": "Whitaker",
+      "id": "0002"
     },
     {
       "firstName": "Leanna",
-      "lastName": "Garrison"
+      "lastName": "Garrison",
+      "id": "0003"
     },
     {
       "firstName": "Sherman",
-      "lastName": "Foster"
+      "lastName": "Foster",
+      "id": "0004"
     },
     {
       "firstName": "Cassie",
-      "lastName": "Ramos"
+      "lastName": "Ramos",
+      "id": "0005"
     },
     {
       "firstName": "Calderon",
-      "lastName": "Daniel"
+      "lastName": "Daniel",
+      "id": "0006"
     },
     {
       "firstName": "Shanna",
-      "lastName": "Boyle"
+      "lastName": "Boyle",
+      "id": "0007"
     }
 
   );
