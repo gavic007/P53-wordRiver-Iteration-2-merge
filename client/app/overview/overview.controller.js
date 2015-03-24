@@ -11,6 +11,8 @@ angular.module('WordRiverApp')
     $scope.showPack = false;
     $scope.currentPack = null;
     $scope.showTileAdder = false;
+    $scope.showStudent = false;
+    $scope.currentStudent = null;
 
     $scope.groupList = [];
 
@@ -112,4 +114,10 @@ angular.module('WordRiverApp')
       $scope.showPack = true;
       $scope.currentPack = pack;
     };
+
+    $scope.studentInfo = function(student){
+      $scope.showStudent = true;
+      $scope.currentStudent = student;
+    };
+
   });

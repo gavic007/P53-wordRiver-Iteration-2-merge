@@ -12,6 +12,7 @@ module.exports = function(app) {
   app.use('/api/packs', require('./api/pack'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/students', require ('./api/student'));
+  app.use('/api/AddingWordsDatabases', require('./api/AddingWordsDatabase'));
 
   app.use('/auth', require('./auth'));
 
