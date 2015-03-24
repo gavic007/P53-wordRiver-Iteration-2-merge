@@ -14,7 +14,7 @@ angular.module('WordRiverApp')
     //beforeEach(module('socketMock'));
 
     $scope.getWords = function(){
-      $http.get('/api/packs').success(function(AllWordsDatabases) {
+      $http.get('api/AddingWordsDatabases').success(function(AllWordsDatabases) {
         $scope.currentWords = AllWordsDatabases;
         $scope.allWords = $scope.currentWords;
       });
@@ -23,13 +23,17 @@ angular.module('WordRiverApp')
     $scope.getWords();
 
     $scope.addWords = function(){
+      //console.log("adding words function before if statement");
       if($scope.wordField.length >= 1) {
-          <!--these words will be going into the individuals page, possibly the class words, and added to her program (words they can use) -->
-        $http.post('/api/packs', {tiles: [$scope.wordField]}).success(function () {
-            $scope.getWords();
-            $scope.allWords.push({tiles: [$scope.wordField]});
-          });
-          $scope.wordField = "";
+       // console.log("adding words function after if statement");
+        <!--these words will be going into the individuals page, possibly the class words, and added to her program (words they can use) -->
+        $http.post('api/AddingWordsDatabases', {words: $scope.wordField}).success(function () {
+          console.log("allCheckedWords function after post statement");
+          $scope.getWords();
+          $scope.allWords.push({words: $scope.wordField});
+          console.log("adding words function after if push thing");
+        });
+        $scope.wordField = "";
       }
     };
 
@@ -37,7 +41,7 @@ angular.module('WordRiverApp')
       var input = $scope.wordField;
       var array = $scope.allWords;
       for (var i = 0; i < array.length; i++) {
-        var arrayValue = array[i].tiles;
+        var arrayValue = array[i].words;
         if (input === arrayValue){
           alert("This word already exists.");
           return true;
@@ -49,7 +53,7 @@ angular.module('WordRiverApp')
     };
 
     $scope.removeData = function(index){
-      $http.delete('/api/packs/' + $scope.allWords[index]._id).success(function(){
+      $http.delete('api/AddingWordsDatabases/' + $scope.allWords[index]._id).success(function(){
         $scope.getWords();
       });
     };
@@ -70,14 +74,14 @@ angular.module('WordRiverApp')
     $scope.studentChecked = false;
 
     $scope.allCheckedWords = function(object){
-      console.log("this is before the if statement in the allCheckedWords words function");
+      console.log("allCheckedWords function before if statement");
       object.value = !object.value;
       if(object.value==!$scope.isChecked){
-        console.log("this is after the if statement in the allCheckedWords words function");
+        console.log("allCheckedWords function after if statement");
         console.log('true');
-        $scope.checkedWords.push(object.tiles);
-        console.log("this is after the push statement in the allCheckedWords words function");
-        console.log(object.tiles);
+        $scope.checkedWords.push(object.words);
+        console.log("allCheckedWords function after push statement");
+        console.log(object.words);
       }
       else if(object.value == false){
         console.log("false");

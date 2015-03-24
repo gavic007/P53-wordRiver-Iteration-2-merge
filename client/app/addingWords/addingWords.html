@@ -24,7 +24,7 @@
   <!--<ul>-->
     <!--<form name="addingWordsForm" action="checkboxes.asp" method="post">-->
       <!--<span><input type = "button" name ="CheckAll" value="Check All"></span>-->
-    <li class="list-group-item" ng-repeat="test in allWords"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.tiles}}</label> <span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>
+    <li class="list-group-item" ng-repeat="test in allWords"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label> <span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>
 
       <!--<li class="list-group-item" ng-repeat="test in data">{{test.weight}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>-->
     <!--</form>-->
