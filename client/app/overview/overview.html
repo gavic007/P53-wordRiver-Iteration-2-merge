@@ -23,9 +23,13 @@
 
           <h1 class="page-header">Groups:</h1>
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
-            <li><a href="#" data-ng-bind="group.groupName">{{group.groupName}}</a></li>
-            <li><a href="#" data-ng-click="showdetails(group)">Display</a></li>
+            <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" ng-hide = "showGroupList">{{group.groupName}}</a></li>
+
+            <!--<li><a href="#" ></a>{{group.students}}</li>-->
           </ul>
+          <table ng-hide = "showStudentList" > {{group.groupName}}</table>
+          <!--<p id="studentList">-->
+
         </div>
 
 
