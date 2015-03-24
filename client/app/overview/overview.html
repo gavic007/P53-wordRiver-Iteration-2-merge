@@ -13,9 +13,19 @@
         <div class="col-xs-4">
           <input type="submit" value="Assign Context Pack" class="btn btn-primary">
             <h1 class="page-header">Students:</h1>
-            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="student in studentList">
-              <input type="checkbox" <li><a href="#" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
+            <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
+              <input type="checkbox" <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
             </ul>
+          <div ng-show="showStudent">
+            <div class="col-xs-4">
+              <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="pack in contextPacks">
+                  <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
+                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <!--<form class="thing-form">-->
