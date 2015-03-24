@@ -87,7 +87,7 @@ angular.module('WordRiverApp')
         console.log("false");
       }
     };
-
+//================================================================================================
     $scope.allCheckedStudents = function(object){
       object.value = !object.value;
       if(object.value == !$scope.studentChecked){
@@ -121,10 +121,9 @@ angular.module('WordRiverApp')
     $rootScope.currentStudent = null;
 
 
-    $http.get('/api/student').success(function(students) {
+    $http.get('/api/students').success(function(students) {
       $scope.students = students;
       socket.syncUpdates('student', $scope.students);
-      $scope.totalClasses();
       $scope.populateStudentArray();
     });
 
