@@ -14,7 +14,7 @@ angular.module('WordRiverApp')
     //beforeEach(module('socketMock'));
 
     $scope.getWords = function(){
-      $http.get('/api/AddingWordsDatabases').success(function(AllWordsDatabases) {
+      $http.get('/api/packs').success(function(AllWordsDatabases) {
         $scope.currentWords = AllWordsDatabases;
         $scope.allWords = $scope.currentWords;
       });
@@ -25,9 +25,9 @@ angular.module('WordRiverApp')
     $scope.addWords = function(){
       if($scope.wordField.length >= 1) {
           <!--these words will be going into the individuals page, possibly the class words, and added to her program (words they can use) -->
-          $http.post('/api/AddingWordsDatabases', {words: $scope.wordField}).success(function () {
+        $http.post('/api/packs', {tiles: [$scope.wordField]}).success(function () {
             $scope.getWords();
-            $scope.allWords.push({words: $scope.wordField});
+            $scope.allWords.push({tiles: [$scope.wordField]});
           });
           $scope.wordField = "";
       }
@@ -37,7 +37,7 @@ angular.module('WordRiverApp')
       var input = $scope.wordField;
       var array = $scope.allWords;
       for (var i = 0; i < array.length; i++) {
-        var arrayValue = array[i].words;
+        var arrayValue = array[i].tiles;
         if (input === arrayValue){
           alert("This word already exists.");
           return true;
@@ -49,7 +49,7 @@ angular.module('WordRiverApp')
     };
 
     $scope.removeData = function(index){
-      $http.delete('/api/AddingWordsDatabases/' + $scope.allWords[index]._id).success(function(){
+      $http.delete('/api/packs/' + $scope.allWords[index]._id).success(function(){
         $scope.getWords();
       });
     };
@@ -70,11 +70,14 @@ angular.module('WordRiverApp')
     $scope.studentChecked = false;
 
     $scope.allCheckedWords = function(object){
+      console.log("this is before the if statement in the allCheckedWords words function");
       object.value = !object.value;
       if(object.value==!$scope.isChecked){
+        console.log("this is after the if statement in the allCheckedWords words function");
         console.log('true');
-        $scope.checkedWords.push(object.words);
-        console.log(object.words);
+        $scope.checkedWords.push(object.tiles);
+        console.log("this is after the push statement in the allCheckedWords words function");
+        console.log(object.tiles);
       }
       else if(object.value == false){
         console.log("false");
