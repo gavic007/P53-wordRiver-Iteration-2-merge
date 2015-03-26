@@ -15,7 +15,7 @@
           <input type="submit" value="Assign Context Pack" class="btn btn-primary">
             <h1 class="page-header">Students:</h1>
             <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
-              <input type="checkbox" <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
+              <input type="checkbox"> <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
             </ul>
 <!-- this is the "profile" of an individual student underneath the student list -->
           <div ng-show="showStudent">
@@ -27,6 +27,10 @@
                   <!--We need to have a context pack because an instance of deleting a context pack here deletes it everywhere. YIKES!-->
                   <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
               </ul>
+<!-- this is where the individual student's words are going to be listed -->
+              <!--<ul class="list-group">-->
+                <!--<li class="list-group-item" ng-repeat=""></li>-->
+              <!--</ul>-->
             </div>
           </div>
         </div>

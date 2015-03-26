@@ -74,18 +74,42 @@ angular.module('WordRiverApp')
     $scope.studentChecked = false;
 
     $scope.allCheckedWords = function(object){
-      console.log("allCheckedWords function before if statement");
       object.value = !object.value;
       if(object.value==!$scope.isChecked){
-        console.log("allCheckedWords function after if statement");
         console.log('true');
         $scope.checkedWords.push(object.words);
-        console.log("allCheckedWords function after push statement");
         console.log(object.words);
       }
       else if(object.value == false){
         console.log("false");
       }
+    };
+
+    $scope.pushWordsToStudents = function(){
+      for(var i = 0; i < $scope.checkedStudents.length; i++){
+        for(var j = 0; j <  $scope.checkedWords.length; j++ ) {
+          $scope.checkedStudents[i].studentWordArray.push($scope.checkedWords[j]);
+        }
+      }
+
+     // console.log("this is before the first if statement");
+     // var object = null;
+     //if($scope.allCheckedWords(object) == true){
+     //  for(var j = 0; j <$scope.checkedWords.length; j++){
+     //    object = $scope.checkedWords[j];
+     //  }
+     //
+     //  console.log("this is before the second if statement");
+     //  if($scope.allCheckedStudents($scope.checkedStudents) == true){
+     //    console.log("this is after the both if statements");
+     //     for(var i=0;i < $scope.checkedStudents.length;i++) {
+     //       $scope.checkedStudents[i].studentWordArray.push($scope.checkedWords);
+     //       console.log("this is after the push if statement");
+     //       console.log($scope.checkedStudents[i]);
+     //       console.log($scope.checkedWords);
+     //     }
+     //  }
+     //}
     };
 //================================================================================================
     $scope.allCheckedStudents = function(object){

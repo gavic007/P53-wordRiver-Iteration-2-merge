@@ -6,7 +6,9 @@ var mongoose = require('mongoose'),
 var StudentSchema = new Schema({
   "firstName": String,
   "lastName": String,
-  "gender": String
+  "id": String,
+  "studentContextPackArray": [String],
+  "studentWordArray": [String]
 });
 
 module.exports = mongoose.model('Student', StudentSchema);
