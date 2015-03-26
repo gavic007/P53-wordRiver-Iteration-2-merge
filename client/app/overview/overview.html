@@ -7,86 +7,110 @@
 <!--<img src="assets/images/waterSplash.png" alt="I'm Yeoman">-->
 <!--</div>-->
 <!--</header>-->
+<!--We added this to access bootstrap capabilities-->
+<head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
 
 <!-- This is the student list -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-4">
-          <input type="submit" value="Assign Context Pack" class="btn btn-primary">
-            <h1 class="page-header">Students:</h1>
-            <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
-              <input type="checkbox"> <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
-            </ul>
-<!-- this is the "profile" of an individual student underneath the student list -->
-          <div ng-show="showStudent">
-            <div class="col-xs-4">
-              <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
-              <ul class="list-group">
-                <li class="list-group-item" ng-repeat="pack in contextPacks">
-                  <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
-                  <!--We need to have a context pack because an instance of deleting a context pack here deletes it everywhere. YIKES!-->
-                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
-              </ul>
-<!-- this is where the individual student's words are going to be listed -->
-              <!--<ul class="list-group">-->
-                <!--<li class="list-group-item" ng-repeat=""></li>-->
-              <!--</ul>-->
-            </div>
-          </div>
-        </div>
-
-        <!--<form class="thing-form">-->
-        <!--<label>Syncs in realtime across clients</label>-->
-        <!--<p class="input-group">-->
-        <!--<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">-->
-        <!--<span class="input-group-btn">-->
-        <!--<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>-->
-        <!--</span>-->
-        <!--</p>-->
-        <!--</form>-->
-
-        <div class="col-xs-4">
-            <h1 class="page-header">Context Packs:</h1>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <form ng-submit="addContextPacks()">
-                        <input ng-model="textField" type="text" size="15" placeholder="add a context pack!">
-                        <input type="submit" value="submit" class="btn btn-primary">
-                    </form>
-                </li>
-                <li class="list-group-item" ng-repeat="pack in contextPacks">
-                  <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
-                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
-            </ul>
-        </div>
-
-        <div class="col-xs-4">
-            <div ng-show="showPack">
-                <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
-                <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
-                    <li>{{tile}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
-                </ul>
-                <div ng-hide="showTileAdder">
-                <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
-                </div>
-                <div ng-show="showTileAdder">
-                    <form ng-submit="addTile()" >
-                        <input ng-model="tileField" type="text" size="20" placeholder="add a tile!">
-                        <input type="submit" value="Add" class="btn btn-primary" ng-click="toggleShowAdder()">
-                    </form>
-
-                 </div>
-            </div>
-
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-xs-2">
+      <input type="submit" value="Assign Context Pack" class="btn btn-primary">
+      <h1 class="page-header">Students:</h1>
+      <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
+        <input type="checkbox" <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
+      </ul>
     </div>
-</div>
 
-<footer class="footer">
-  <div class="container">
-    <p>Angular Fullstack v2.0.13 |
-      <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-      <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+    <div class="col-xs-2">
+      <div ng-show="showStudent">
+        <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="pack in contextPacks">
+            <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
+            <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+        </ul>
+        <!-- this is where the individual student's words are going to be listed -->
+        <!--<ul class="list-group">-->
+        <!--<li class="list-group-item" ng-repeat=""></li>-->
+        <!--</ul>-->
+
+      </div>
+    </div>
+
+
+
+
+    <!--<form class="thing-form">-->
+    <!--<label>Syncs in realtime across clients</label>-->
+    <!--<p class="input-group">-->
+    <!--<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">-->
+    <!--<span class="input-group-btn">-->
+    <!--<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>-->
+    <!--</span>-->
+    <!--</p>-->
+    <!--</form>-->
+
+    <div class="col-xs-2">
+      <h1 class="page-header">Context Packs:</h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <form ng-submit="addContextPacks()">
+            <input ng-model="textField" type="text" size="15" placeholder="add a context pack!">
+            <input type="submit" value="submit" class="btn btn-primary">
+          </form>
+        </li>
+        <li class="list-group-item" ng-repeat="pack in contextPacks">
+          <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
+          <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+      </ul>
+    </div>
+
+    <div class="col-xs-3">
+      <div ng-show="showPack">
+        <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
+        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
+          <li>{{tile}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
+        </ul>
+        <div ng-hide="showTileAdder">
+          <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
+        </div>
+        <div ng-show="showTileAdder">
+          <form ng-submit="addTile()" >
+            <input ng-model="tileField" type="text" size="20" placeholder="add a tile!">
+            <input type="submit" value="Add" class="btn btn-primary" ng-click="toggleShowAdder()">
+          </form>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
   </div>
-</footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-2">
+        <h1 class="page-header">Groups:</h1>
+        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
+          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" ng-hide = "showGroupList">{{group.groupName}}</a></li>
+          <!--<li><a href="#" ></a>{{group.students}}</li>-->
+        </ul>
+      </div>
+      <div>
+        <table ng-hide = "showStudentList" > {{group.groupName}}</table>
+        <!--<p id="studentList">-->
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+        <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+    </div>
+  </footer>

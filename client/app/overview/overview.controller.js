@@ -3,7 +3,6 @@
 angular.module('WordRiverApp')
   .controller('OverviewCtrl', function ($scope, $http, socket) {
     $scope.studentList = [];
-
     $scope.contextPacks = [];
 
     $scope.textField = "";
@@ -15,6 +14,39 @@ angular.module('WordRiverApp')
     $scope.showStudent = false;
     $scope.currentStudent = null;
 
+    $scope.groupList = [];
+
+    $http.get('/api/students').success(function(studentList) {
+      $scope.studentList = studentList;
+      socket.syncUpdates('student', $scope.studentList);
+      console.log($scope.studentList[0].lastName);
+    });
+
+    $scope.getGroupList = function(){
+      $http.get('/api/users/me').success(function(user) {
+        $scope.groupList = user.studentGroups;
+        //socket.syncUpdates('group', $scope.groupList);
+        console.log($scope.groupList[0]);
+      });
+    };
+
+    $scope.getGroupList();
+    $scope.showStudentList = true;
+    $scope.showGroupList = false;
+
+    $scope.showStudents = function(group) {
+      $scope.showStudentList = ! $scope.showStudentList;
+      $scope.showGroupList = ! $scope.showGroupList;
+
+      //document.getElementById("studentList").innerHTML = "";
+      //var words = "";
+      //for (var i = 0; i < group.groupList.length; i++) {
+      //  words = words + group.students[i].name + "<br>";
+      //}
+      //document.getElementById("studentList").innerHTML = "<u>" + group.groupName + "</u><br/>" + words;
+
+    };
+
     $scope.getPacks = function() {
       $http.get('/api/packs').success(function (contextPack) {
         $scope.contextPacks = contextPack;
@@ -23,12 +55,6 @@ angular.module('WordRiverApp')
     };
 
     $scope.getPacks();
-
-    $http.get('/api/students').success(function(studentList) {
-      $scope.studentList = studentList;
-      socket.syncUpdates('student', $scope.studentList);
-    });
-
 
     $scope.deletePack = function(index) {
       $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
@@ -47,6 +73,7 @@ angular.module('WordRiverApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('pack');
     });
+
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
