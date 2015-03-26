@@ -19,7 +19,7 @@
       <input type="submit" value="Assign Context Pack" class="btn btn-primary">
       <h1 class="page-header">Students:</h1>
       <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
-        <input type="checkbox" <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
+        <li><label><input type="checkbox" ><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></label></li>
       </ul>
     </div>
 
@@ -38,19 +38,6 @@
 
       </div>
     </div>
-
-
-
-
-    <!--<form class="thing-form">-->
-    <!--<label>Syncs in realtime across clients</label>-->
-    <!--<p class="input-group">-->
-    <!--<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">-->
-    <!--<span class="input-group-btn">-->
-    <!--<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>-->
-    <!--</span>-->
-    <!--</p>-->
-    <!--</form>-->
 
     <div class="col-xs-2">
       <h1 class="page-header">Context Packs:</h1>
@@ -95,22 +82,22 @@
       <div class="col-xs-2">
         <h1 class="page-header">Groups:</h1>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
-          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" ng-hide = "showGroupList">{{group.groupName}}</a></li>
+          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" >{{group.groupName}}</a></li>
+           <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
           <!--<li><a href="#" ></a>{{group.students}}</li>-->
         </ul>
       </div>
-      <div>
-        <table ng-hide = "showStudentList" > {{group.groupName}}</table>
+      <div class="col-xs-2">
+        <li ng-hide = "showStudentList" > {{group.groupName}}</li>
         <!--<p id="studentList">-->
       </div>
     </div>
   </div>
 
-
-  <footer class="footer">
+<footer class="footer">
     <div class="container">
       <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+        <a href="https://tw  itter.com/tyhenkel">@tyhenkel</a> |
         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
     </div>
-  </footer>
+</footer>
