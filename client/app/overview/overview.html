@@ -24,7 +24,8 @@
               <ul class="list-group">
                 <li class="list-group-item" ng-repeat="pack in contextPacks">
                   <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
-                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+                  <!--We need to have a context pack because an instance of deleting a context pack here deletes it everywhere. YIKES!-->
+                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
               </ul>
             </div>
           </div>
@@ -51,7 +52,7 @@
                 </li>
                 <li class="list-group-item" ng-repeat="pack in contextPacks">
                   <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
-                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+                  <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
             </ul>
         </div>
 
