@@ -60,6 +60,12 @@ angular.module('WordRiverApp')
       $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
     };
 
+    $scope.confirmDelete = function(index) {
+      this.index = index;
+      if (confirm("Are you sure you want to delete?") == true) {
+        $scope.deletePack(index);
+      }
+    };
     //$scope.deleteTile = function(pack,index) {
     //  return pack.splice(index, 1);
     //};
