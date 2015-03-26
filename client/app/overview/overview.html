@@ -8,6 +8,7 @@
 <!--</div>-->
 <!--</header>-->
 
+<!-- This is the student list -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-4">
@@ -16,6 +17,7 @@
             <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
               <input type="checkbox" <li><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></li>
             </ul>
+<!-- this is the "profile" of an individual student underneath the student list -->
           <div ng-show="showStudent">
             <div class="col-xs-4">
               <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
