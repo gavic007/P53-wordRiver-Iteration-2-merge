@@ -34,18 +34,20 @@ angular.module('WordRiverApp')
     $scope.showStudentList = true;
     $scope.showGroupList = false;
 
-    $scope.showStudents = function(group) {
-      $scope.showStudentList = ! $scope.showStudentList;
-      $scope.showGroupList = ! $scope.showGroupList;
+    $scope.studentListInGroup = [
+      {name:String}
+    ];
 
-      //document.getElementById("studentList").innerHTML = "";
-      //var words = "";
-      //for (var i = 0; i < group.groupList.length; i++) {
-      //  words = words + group.students[i].name + "<br>";
-      //}
-      //document.getElementById("studentList").innerHTML = "<u>" + group.groupName + "</u><br/>" + words;
-
+    $scope.showStudents = function(Object) {
+      $scope.showStudentList = false;
+      $scope.studentListInGroup.length = 0;
+      //$scope.showGroupList = ! $scope.showGroupList;
+      for (var i=0; i < Object.students.length; i++) {
+        $scope.studentListInGroup.push({name:Object.students[i].name});
+      }
     };
+
+    
 
     $scope.getPacks = function() {
       $http.get('/api/packs').success(function (contextPack) {

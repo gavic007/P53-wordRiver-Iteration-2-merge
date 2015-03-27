@@ -82,26 +82,28 @@
       <div class="col-xs-2">
         <h1 class="page-header">Groups:</h1>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
-          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" >{{group.groupName}}</a></li>
-           <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
+          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group)" >{{group.groupName}}</a></li>
+          <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
           <!--<li><a href="#" ></a>{{group.students}}</li>-->
-          <li ng-hide = "showStudentList" >
-            <ul ng-repeat = "student in group.students">{{student.name}}</ul>
-          </li>
-        </ul>
 
+        </ul>
+      </div>
+      <div class = "col-xs-2" ng-hide = "showStudentList">
+        <h1 class = "page-header">Students: </h1>
+          <ul ng-repeat = "students in studentListInGroup">{{students.name}}</ul>
       </div>
 
 
-        <!--<p id="studentList">-->
+
+      <!--<p id="studentList">-->
 
     </div>
   </div>
 
-<footer class="footer">
+  <footer class="footer">
     <div class="container">
       <p>Angular Fullstack v2.0.13 |
         <a href="https://tw  itter.com/tyhenkel">@tyhenkel</a> |
         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
     </div>
-</footer>
+  </footer>
