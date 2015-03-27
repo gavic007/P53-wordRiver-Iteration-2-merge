@@ -85,12 +85,16 @@
           <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" >{{group.groupName}}</a></li>
            <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
           <!--<li><a href="#" ></a>{{group.students}}</li>-->
+          <li ng-hide = "showStudentList" >
+            <ul ng-repeat = "student in group.students">{{student.name}}</ul>
+          </li>
         </ul>
+
       </div>
-      <div class="col-xs-2">
-        <li ng-hide = "showStudentList" > {{group.groupName}}</li>
+
+
         <!--<p id="studentList">-->
-      </div>
+
     </div>
   </div>
 
