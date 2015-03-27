@@ -88,14 +88,14 @@
       <div class="col-xs-2">
         <h1 class="page-header">Groups:</h1>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
-          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group.groupName)" >{{group.groupName}}</a></li>
-           <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
+          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group)" >{{group.groupName}}</a></li>
+          <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
           <!--<li><a href="#" ></a>{{group.students}}</li>-->
         </ul>
       </div>
-      <div class="col-xs-2">
-        <li ng-hide = "showStudentList" > {{group.groupName}}</li>
-        <!--<p id="studentList">-->
+      <div class = "col-xs-2" ng-hide = "showStudentList">
+        <h1 class = "page-header">Students: </h1>
+          <ul ng-repeat = "students in studentListInGroup">{{students.name}}</ul>
       </div>
     </div>
   </div>
