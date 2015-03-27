@@ -5,16 +5,16 @@ angular.module('WordRiverApp')
     $scope.currentWords = [];
     $scope.allWords = [];
 
-    $scope.checkedWords=[];
-    $scope.checkedStudents=[];
+    $scope.checkedWords = [];
+    $scope.checkedStudents = [];
 
     $scope.wordField = "";
 
     //beforeEach(module('wordRiverTeamFtlApp'));
     //beforeEach(module('socketMock'));
 
-    $scope.getWords = function(){
-      $http.get('api/AddingWordsDatabases').success(function(AllWordsDatabases) {
+    $scope.getWords = function () {
+      $http.get('api/AddingWordsDatabases').success(function (AllWordsDatabases) {
         $scope.currentWords = AllWordsDatabases;
         $scope.allWords = $scope.currentWords;
       });
@@ -22,10 +22,10 @@ angular.module('WordRiverApp')
 
     $scope.getWords();
 
-    $scope.addWords = function(){
+    $scope.addWords = function () {
       //console.log("adding words function before if statement");
-      if($scope.wordField.length >= 1) {
-       // console.log("adding words function after if statement");
+      if ($scope.wordField.length >= 1) {
+        // console.log("adding words function after if statement");
         <!--these words will be going into the individuals page, possibly the class words, and added to her program (words they can use) -->
         $http.post('api/AddingWordsDatabases', {words: $scope.wordField}).success(function () {
           console.log("allCheckedWords function after post statement");
@@ -37,12 +37,12 @@ angular.module('WordRiverApp')
       }
     };
 
-    $scope.hasDuplicateValues = function() {
+    $scope.hasDuplicateValues = function () {
       var input = $scope.wordField;
       var array = $scope.allWords;
       for (var i = 0; i < array.length; i++) {
         var arrayValue = array[i].words;
-        if (input === arrayValue){
+        if (input === arrayValue) {
           alert("This word already exists.");
           return true;
         }
@@ -52,20 +52,20 @@ angular.module('WordRiverApp')
 
     };
 
-    $scope.removeData = function(index){
-      $http.delete('api/AddingWordsDatabases/' + $scope.allWords[index]._id).success(function(){
+    $scope.removeData = function (index) {
+      $http.delete('api/AddingWordsDatabases/' + $scope.allWords[index]._id).success(function () {
         $scope.getWords();
       });
     };
 
-    $scope.checkAllCheckboxes = function(field){
-      for (var i = 0; i < field.length; i++){
+    $scope.checkAllCheckboxes = function (field) {
+      for (var i = 0; i < field.length; i++) {
         field[i].checked = true;
       }
     };
 
-    $scope.unCheckAllCheckboxes = function(field){
-      for (var i = 0; i < field.length; i++){
+    $scope.unCheckAllCheckboxes = function (field) {
+      for (var i = 0; i < field.length; i++) {
         field[i].checked = false;
       }
     };
@@ -73,44 +73,55 @@ angular.module('WordRiverApp')
     $scope.isChecked = false;
     $scope.studentChecked = false;
 
-    $scope.allCheckedWords = function(object){
+    $scope.allCheckedWords = function (object) {
       object.value = !object.value;
-      if(object.value==!$scope.isChecked){
+      if (object.value == !$scope.isChecked) {
         console.log('true');
         $scope.checkedWords.push(object.words);
         console.log(object.words);
       }
-      else if(object.value == false){
+      else if (object.value == false) {
         console.log("false");
       }
     };
 
-    $scope.pushWordsToStudents = function(){
-      for(var i = 0; i < $scope.checkedStudents.length; i++){
-        for(var j = 0; j <  $scope.checkedWords.length; j++ ) {
-          $scope.checkedStudents[i].studentWordArray.push($scope.checkedWords[j]);
-        }
-      }
+// This was showing the array for a bit so I do think its finally getting into the array, but something with the if
+    // statement is screwing it up. when it was working it only did the first thing clicked
+    $scope.pushWordsToStudents = function () {
+      //console.log("before the for statement in the pushWordsToStudents function");
+      console.log($scope.students);  // this is showing object, object, object...     PROBLEM!!!!!!!!!!!!!!!
+      console.log($scope.checkedWords);
+      // this  is correctly shows all checked words in an array. it doesnt get rid of words when unchecked from the checked words array. but it also doesnt duplicate
+      console.log($scope.checkedStudents);
+       //this is correctly showing all checked students in an array. doesnt get rid of unchecked students but doesnt duplicate
+        for(var i = 0; i < $scope.students.length; i++){
+          //console.log("after the first for statement in the pushWordsToStudents function");
+          for(var j = 0; j < $scope.checkedStudents.length; j++){
+            console.log("after the second statement in the pushWordsToStudents function");
+             // for(var k = 0; k < $scope.checkedWords.length; k++) {
+                console.log("after the third statement in the pushWordsToStudents function");
+                if ($scope.students[i] == $scope.checkedStudents[j]) {
+                  console.log("after the if statement in the pushWordsToStudents function");
+                  $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
+                 console.log($scope.students[i].studentWordArray);
+              }
+            }
+          }
+        };
 
-     // console.log("this is before the first if statement");
-     // var object = null;
-     //if($scope.allCheckedWords(object) == true){
-     //  for(var j = 0; j <$scope.checkedWords.length; j++){
-     //    object = $scope.checkedWords[j];
-     //  }
-     //
-     //  console.log("this is before the second if statement");
-     //  if($scope.allCheckedStudents($scope.checkedStudents) == true){
-     //    console.log("this is after the both if statements");
-     //     for(var i=0;i < $scope.checkedStudents.length;i++) {
-     //       $scope.checkedStudents[i].studentWordArray.push($scope.checkedWords);
-     //       console.log("this is after the push if statement");
-     //       console.log($scope.checkedStudents[i]);
-     //       console.log($scope.checkedWords);
-     //     }
-     //  }
-     //}
-    };
+
+      //maybe we could make it so that we walk through the student array, see which ones match the checked ones in
+      //name and then be like push that to those students in the student array
+
+
+      //for(var i = 0; i < $scope.checkedStudents.length; i++){
+      //  for(var j = 0; j <  $scope.checkedWords.length; j++ ) {
+      //    console.log( $scope.checkedStudents[i]);
+      //    console.log($scope.checkedWords[j]);
+      //    $scope.checkedStudents[i].students.studentWordArray.push($scope.checkedWords[j]);
+    //}
+ // }
+
 //================================================================================================
     $scope.allCheckedStudents = function(object){
       object.value = !object.value;
@@ -141,6 +152,11 @@ angular.module('WordRiverApp')
   //  $scope.classList = [];
     $scope.studentList = [];
     $scope.studentSortArray = [];
+    $scope.makeCheckedStudentALegitStudent = function(){
+      for(var i = 0; i < $scope.checkedStudents.length; i++){
+
+        }
+      };
     $scope.filterText = null;
     $rootScope.currentStudent = null;
 
@@ -150,6 +166,9 @@ angular.module('WordRiverApp')
       socket.syncUpdates('student', $scope.students);
       $scope.populateStudentArray();
     });
+
+
+
 
     $scope.addStudent = function() {
       if($scope.newStudent === '') {

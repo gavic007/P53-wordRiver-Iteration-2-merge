@@ -510,37 +510,51 @@ Student.find({}).remove(function() {
     {
       "firstName": "Liza",
       "lastName": "Pratt",
-      "id": "0001"
+      "id": "0001",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Battle",
       "lastName": "Whitaker",
-      "id": "0002"
+      "id": "0002",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Leanna",
       "lastName": "Garrison",
-      "id": "0003"
+      "id": "0003",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Sherman",
       "lastName": "Foster",
-      "id": "0004"
+      "id": "0004",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Cassie",
       "lastName": "Ramos",
-      "id": "0005"
+      "id": "0005",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Calderon",
       "lastName": "Daniel",
-      "id": "0006"
+      "id": "0006",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     },
     {
       "firstName": "Shanna",
       "lastName": "Boyle",
-      "id": "0007"
+      "id": "0007",
+      "studentContextPackArray": [],
+      "studentWordArray": []
     }
 
   );
