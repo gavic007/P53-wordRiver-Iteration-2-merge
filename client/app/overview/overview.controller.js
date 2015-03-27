@@ -13,8 +13,12 @@ angular.module('WordRiverApp')
     $scope.showTileAdder = false;
     $scope.showStudent = false;
     $scope.currentStudent = null;
-
     $scope.groupList = [];
+
+    $scope.studentPacks = [];
+
+    $scope.isChecked = false;
+   // $scope.pack.isChecked = null;
 
     $http.get('/api/students').success(function(studentList) {
       $scope.studentList = studentList;
@@ -34,18 +38,20 @@ angular.module('WordRiverApp')
     $scope.showStudentList = true;
     $scope.showGroupList = false;
 
-    $scope.showStudents = function(group) {
-      $scope.showStudentList = ! $scope.showStudentList;
-      $scope.showGroupList = ! $scope.showGroupList;
+    $scope.studentListInGroup = [
+      {name:String}
+    ];
 
-      //document.getElementById("studentList").innerHTML = "";
-      //var words = "";
-      //for (var i = 0; i < group.groupList.length; i++) {
-      //  words = words + group.students[i].name + "<br>";
-      //}
-      //document.getElementById("studentList").innerHTML = "<u>" + group.groupName + "</u><br/>" + words;
-
+    $scope.showStudents = function(Object) {
+      $scope.showStudentList = false;
+      $scope.studentListInGroup.length = 0;
+      //$scope.showGroupList = ! $scope.showGroupList;
+      for (var i=0; i < Object.students.length; i++) {
+        $scope.studentListInGroup.push({name:Object.students[i].name});
+      }
     };
+
+    
 
     $scope.getPacks = function() {
       $http.get('/api/packs').success(function (contextPack) {
@@ -126,4 +132,37 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
+    $scope.isCheckedStudent = function() {
+      for(var i=0; i < $scope.studentList.length; i++){
+        console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
+        return $scope.studentList[i].isChecked == true;
+      }
+    };
+
+    $scope.isCheckedPack = function() {
+      for(var i=0; i < $scope.contextPacks.length; i++){
+        console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
+        return $scope.contextPacks[i].isChecked == true;
+      }
+    };
+
+    $scope.assignContextPack = function() {
+      var checkedStudents = [];
+      var i = 0;
+
+      for(i = 0; i < $scope.studentList.length; i++) {
+        if($scope.studentList[i].isChecked) {
+          checkedStudents.push($scope.studentList[i]);
+        }
+      }
+
+      for(i = 0; i < checkedStudents.length; i++) {
+        for(var j=0; j < $scope.contextPacks.length; j++) {
+          if($scope.contextPacks[j].isChecked) {
+            console.log("Adding pack to: " + $scope.studentList[i]);
+            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+          }
+        }
+      }
+    };
   });
