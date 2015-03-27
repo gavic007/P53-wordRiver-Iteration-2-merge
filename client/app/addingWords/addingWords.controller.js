@@ -93,21 +93,22 @@ angular.module('WordRiverApp')
       console.log($scope.checkedWords);
       // this  is correctly shows all checked words in an array. it doesnt get rid of words when unchecked from the checked words array. but it also doesnt duplicate
       console.log($scope.checkedStudents);
-       //this is correctly showing all checked students in an array. doesnt get rid of unchecked students but doesnt duplicate
-        for(var i = 0; i < $scope.students.length; i++){
-          //console.log("after the first for statement in the pushWordsToStudents function");
-          for(var j = 0; j < $scope.checkedStudents.length; j++){
-            console.log("after the second statement in the pushWordsToStudents function");
-             // for(var k = 0; k < $scope.checkedWords.length; k++) {
-                console.log("after the third statement in the pushWordsToStudents function");
-                if ($scope.students[i] == $scope.checkedStudents[j]) {
-                  console.log("after the if statement in the pushWordsToStudents function");
-                  $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
-                 console.log($scope.students[i].studentWordArray);
-              }
+      //this is correctly showing all checked students in an array. doesnt get rid of unchecked students but doesnt duplicate
+      for (var i = 0; i < $scope.students.length; i++) {
+        //console.log("after the first for statement in the pushWordsToStudents function");
+        for (var j = 0; j < $scope.checkedStudents.length; j++) {
+          //console.log("after the second statement in the pushWordsToStudents function");
+          for (var k = 0; k < $scope.checkedWords.length; k++) {
+            //console.log("after the third statement in the pushWordsToStudents function");
+            if ($scope.students[i] == $scope.checkedStudents[j]) {
+              console.log("after the if statement in the pushWordsToStudents function");
+              $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
+              console.log($scope.students[i].studentWordArray);
             }
           }
-        };
+        }
+      }
+    };
 
 
       //maybe we could make it so that we walk through the student array, see which ones match the checked ones in
