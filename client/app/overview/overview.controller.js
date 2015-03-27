@@ -13,8 +13,12 @@ angular.module('WordRiverApp')
     $scope.showTileAdder = false;
     $scope.showStudent = false;
     $scope.currentStudent = null;
-
     $scope.groupList = [];
+
+    $scope.studentPacks = [];
+
+    $scope.isChecked = false;
+   // $scope.pack.isChecked = null;
 
     $http.get('/api/students').success(function(studentList) {
       $scope.studentList = studentList;
@@ -126,8 +130,37 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
-    $scope.alertStuff = function() {
-      alert("Random messsage");
+    $scope.isCheckedStudent = function() {
+      for(var i=0; i < $scope.studentList.length; i++){
+        console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
+        return $scope.studentList[i].isChecked == true;
+      }
     };
 
+    $scope.isCheckedPack = function() {
+      for(var i=0; i < $scope.contextPacks.length; i++){
+        console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
+        return $scope.contextPacks[i].isChecked == true;
+      }
+    };
+
+    $scope.assignContextPack = function() {
+      var checkedStudents = [];
+      var i = 0;
+
+      for(i = 0; i < $scope.studentList.length; i++) {
+        if($scope.studentList[i].isChecked) {
+          checkedStudents.push($scope.studentList[i]);
+        }
+      }
+
+      for(i = 0; i < checkedStudents.length; i++) {
+        for(var j=0; j < $scope.contextPacks.length; j++) {
+          if($scope.contextPacks[j].isChecked) {
+            console.log("Adding pack to: " + $scope.studentList[i]);
+            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+          }
+        }
+      }
+    };
   });
