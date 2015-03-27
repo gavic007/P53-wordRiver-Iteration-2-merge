@@ -126,4 +126,8 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
+    $scope.alertStuff = function() {
+      alert("Random messsage");
+    };
+
   });

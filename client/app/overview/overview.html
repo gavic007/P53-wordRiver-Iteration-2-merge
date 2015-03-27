@@ -23,6 +23,8 @@
       </ul>
     </div>
 
+
+<!-- this is show student -->
     <div class="col-xs-2">
       <div ng-show="showStudent">
         <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
@@ -39,6 +41,8 @@
       </div>
     </div>
 
+
+    <!-- this is the context packs -->
     <div class="col-xs-2">
       <h1 class="page-header">Context Packs:</h1>
       <ul class="list-group">
@@ -49,11 +53,12 @@
           </form>
         </li>
         <li class="list-group-item" ng-repeat="pack in contextPacks">
-          <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
+          <label><input type="checkbox" > <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a></label>
           <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
       </ul>
     </div>
 
+    <!-- this is the context packs components -->
     <div class="col-xs-3">
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
