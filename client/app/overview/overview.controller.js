@@ -108,10 +108,12 @@ angular.module('WordRiverApp')
 
         //$http.post('/api/packs', {packName: $scope.currentPack.packName, tiles: $scope.currentPack.tiles});
         //$http.delete('/api/packs/' + $scope.currentPack._id);
+        $scope.showTileAdder = true;
         $scope.tileField = "";
 
       }
     };
+
 
     $scope.deleteTile = function(pack, index) {
       pack.tiles.splice(index, 1)
@@ -127,6 +129,7 @@ angular.module('WordRiverApp')
 
     $scope.toggleShowAdder = function() {
       $scope.showTileAdder = !$scope.showTileAdder;
+      console.log($scope.showTileAdder);
     };
 
     $scope.packInfo = function(pack){
