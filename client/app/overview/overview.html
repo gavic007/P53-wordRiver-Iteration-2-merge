@@ -34,25 +34,7 @@
             <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
             <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDeleteStudentPack($index)">&times;</button>
         </ul>
-        <!-- this is where the individual stud$scope.assignContextPack = function() {
-      var checkedStudents = [];
-      var i = 0;
-
-      for(i = 0; i < $scope.studentList.length; i++) {
-        if($scope.studentList[i].isChecked) {
-          checkedStudents.push($scope.studentList[i]);
-        }
-      }
-
-      for(i = 0; i < checkedStudents.length; i++) {
-        for(var j=0; j < $scope.contextPacks.length; j++) {
-          if($scope.contextPacks[j].isChecked) {
-            console.log("Adding pack to: " + $scope.studentList[i]);
-            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
-          }
-        }
-      }
-    };ent's words are going to be listed -->
+        <!-- this is where the individual student's words are going to be listed -->
         <!--<ul class="list-group">-->
         <!--<li class="list-group-item" ng-repeat=""></li>-->
         <!--</ul>-->
@@ -78,7 +60,7 @@
     </div>
 
     <!-- this is the context packs components -->
-    <div class="col-lg-3">
+    <div class="col-xs-3">
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
@@ -87,13 +69,14 @@
         <div ng-hide="showTileAdder">
           <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
         </div>
-
         <div ng-show="showTileAdder">
+
           <form ng-submit="addTile()" >
             <input ng-model="tileField" type="text" size="20" placeholder="add a tile!">
             <input type="submit" value="Add" class="btn btn-primary">
             <button type="button" class="btn btn-link" ng-click="toggleShowAdder()">Done</button>
           </form>
+
         </div>
       </div>
 
