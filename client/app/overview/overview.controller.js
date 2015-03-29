@@ -62,15 +62,22 @@ angular.module('WordRiverApp')
 
     $scope.getPacks();
 
-    $scope.deletePack = function(index) {
-      $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
+    //This deletes just the context pack for students
+    $scope.confirmDeleteStudentPack = function(index) {
+      this.index = index;
+      if (confirm("Are you sure you want to delete this student's Context Pack?") == true) {
+        $scope.studentList[index].studentContextPackArray.pop();
+      }
+
     };
 
+    //This deletes context pack from the database
     $scope.confirmDelete = function(index) {
       this.index = index;
-      if (confirm("Are you sure you want to delete?") == true) {
-        $scope.deletePack(index);
+      if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].packName + "?") == true) {
+        $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
       }
+
     };
     //$scope.deleteTile = function(pack,index) {
     //  return pack.splice(index, 1);

@@ -32,7 +32,7 @@
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="pack in currentStudent.studentContextPackArray track by $index">
             <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
-            <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+            <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDeleteStudentPack($index)">&times;</button>
         </ul>
         <!-- this is where the individual stud$scope.assignContextPack = function() {
       var checkedStudents = [];
@@ -73,7 +73,7 @@
         </li>
         <li class="list-group-item" ng-repeat="pack in contextPacks">
           <label><input type="checkbox"  ng-model = "pack.isChecked"><a href="" ng-click="packInfo(pack)">{{pack.packName}}</a></label>
-          <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
+          <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
       </ul>
     </div>
 
