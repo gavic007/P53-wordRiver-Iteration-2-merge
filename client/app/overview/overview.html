@@ -34,7 +34,25 @@
             <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
             <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="deletePack($index)">&times;</button>
         </ul>
-        <!-- this is where the individual student's words are going to be listed -->
+        <!-- this is where the individual stud$scope.assignContextPack = function() {
+      var checkedStudents = [];
+      var i = 0;
+
+      for(i = 0; i < $scope.studentList.length; i++) {
+        if($scope.studentList[i].isChecked) {
+          checkedStudents.push($scope.studentList[i]);
+        }
+      }
+
+      for(i = 0; i < checkedStudents.length; i++) {
+        for(var j=0; j < $scope.contextPacks.length; j++) {
+          if($scope.contextPacks[j].isChecked) {
+            console.log("Adding pack to: " + $scope.studentList[i]);
+            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+          }
+        }
+      }
+    };ent's words are going to be listed -->
         <!--<ul class="list-group">-->
         <!--<li class="list-group-item" ng-repeat=""></li>-->
         <!--</ul>-->
@@ -85,10 +103,10 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-2">
+      <div class="col-xs-3">
         <h1 class="page-header">Groups:</h1>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
-          <li><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group)" >{{group.groupName}}</a></li>
+          <li><label><input type="checkbox" ng-model = "group.isChecked" ><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group)" >{{group.groupName}}</a></label></li>
           <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->
           <!--<li><a href="#" ></a>{{group.students}}</li>-->
         </ul>

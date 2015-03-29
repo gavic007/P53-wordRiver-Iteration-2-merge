@@ -22,6 +22,7 @@ var UserSchema = new Schema({
       wordColor: String
     }]
   }],
+
   tileBucket: [{
       wordName: String,
       wordType: String,
@@ -32,10 +33,11 @@ var UserSchema = new Schema({
       groupName: String,
       students: [{
         name: String
-      }]
+      }],
+      groupContextPackArray: [String],
+      groupWordArray: [String]
     }
   ]
-
 });
 
 /**

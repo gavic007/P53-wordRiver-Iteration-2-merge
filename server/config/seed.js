@@ -150,7 +150,9 @@ User.find({}).remove(function() {
             {
               "name": "Keller"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         },
         {
           "groupName": "anim",
@@ -173,7 +175,9 @@ User.find({}).remove(function() {
             {
               "name": "Lora"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         },
         {
           "groupName": "do",
@@ -196,7 +200,9 @@ User.find({}).remove(function() {
             {
               "name": "Mckee"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         },
         {
           "groupName": "officia",
@@ -219,7 +225,9 @@ User.find({}).remove(function() {
             {
               "name": "Peggy"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         },
         {
           "groupName": "exercitation",
@@ -245,7 +253,9 @@ User.find({}).remove(function() {
             {
               "name": "Hammond"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         },
         {
           "groupName": "ut",
@@ -271,7 +281,9 @@ User.find({}).remove(function() {
             {
               "name": "Mcfadden"
             }
-          ]
+          ],
+          "groupContextPackArray": [],
+          "groupWordArray": []
         }
       ]
     },
