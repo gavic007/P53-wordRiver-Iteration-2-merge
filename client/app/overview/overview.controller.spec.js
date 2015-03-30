@@ -3,7 +3,7 @@
 describe('Controller: OverviewCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('wordRiverSpaceshipParrotIteration1App'));
+  beforeEach(module('WordRiverApp'));
   beforeEach(module('socketMock'));
 
   var OverviewCtrl,
@@ -27,6 +27,19 @@ describe('Controller: OverviewCtrl', function () {
   it('this is a sanity check', function () {
     expect(true).toBe(true);
   });
+
+  it('should prevent a duplicates from being added to an array', function () {
+    var thing = ["stuff", "more", "people"];
+    scope.preventDuplication(thing, "people");
+    expect(thing.length).toBe(3);
+  });
+
+  it('should allow non duplicates to be added to an array', function () {
+    var thing = ["stuff", "more", "people"];
+    scope.preventDuplication(thing, "new");
+    expect(thing.length).toBe(4);
+  });
+
   //it('should attach a list of things to the scope', function () {
   //  $httpBackend.flush();
   //  expect(scope.awesomeThings.length).toBe(4);
