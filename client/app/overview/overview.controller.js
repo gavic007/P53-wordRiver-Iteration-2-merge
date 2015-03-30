@@ -66,8 +66,10 @@ angular.module('WordRiverApp')
     $scope.confirmDeleteStudentPack = function(index) {
       this.index = index;
       if (confirm("Are you sure you want to delete this student's Context Pack?") == true) {
-        $scope.studentList[index].studentContextPackArray.pop();
+        $scope.currentStudent.studentContextPackArray.splice(index, 1);
       }
+      console.log($scope.studentList[index]);
+      //console.log($scope.studentList[index].studentContextPackArray[index]);
 
     };
 
@@ -86,7 +88,6 @@ angular.module('WordRiverApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('pack');
     });
-
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
@@ -108,6 +109,7 @@ angular.module('WordRiverApp')
 
         //$http.post('/api/packs', {packName: $scope.currentPack.packName, tiles: $scope.currentPack.tiles});
         //$http.delete('/api/packs/' + $scope.currentPack._id);
+        $scope.showTileAdder = true;
         $scope.tileField = "";
 
       }
@@ -125,8 +127,10 @@ angular.module('WordRiverApp')
       //$http.delete('/api/packs/' + pack._id);
     };
 
+    $scope.showTileAdder = false;
     $scope.toggleShowAdder = function() {
       $scope.showTileAdder = !$scope.showTileAdder;
+      console.log($scope.showTileAdder);
     };
 
     $scope.packInfo = function(pack){
@@ -141,7 +145,7 @@ angular.module('WordRiverApp')
 
     $scope.isCheckedStudent = function() {
       for(var i=0; i < $scope.studentList.length; i++){
-        console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
+        //console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
         return $scope.studentList[i].isChecked == true;
       }
     };
@@ -149,14 +153,14 @@ angular.module('WordRiverApp')
     //isCheckedGroup
     $scope.isCheckedGroup = function() {
       for(var i=0; i < $scope.groupList.length; i++){
-        console.log($scope.groupList[i].groupName + ": " + $scope.groupList[i].isChecked);
+        //console.log($scope.groupList[i].groupName + ": " + $scope.groupList[i].isChecked);
         return $scope.groupList[i].isChecked == true;
       }
     };
 
     $scope.isCheckedPack = function() {
       for(var i=0; i < $scope.contextPacks.length; i++){
-        console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
+        //console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
         return $scope.contextPacks[i].isChecked == true;
       }
     };
@@ -175,7 +179,7 @@ angular.module('WordRiverApp')
       for(i = 0; i < checkedStudents.length; i++) {
         for (var j = 0; j < $scope.contextPacks.length; j++) {
           if ($scope.contextPacks[j].isChecked) {
-            console.log("Adding pack to: " + $scope.studentList[i]);
+            //console.log("Adding pack to: " + $scope.studentList[i]);
             $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
           }
         }
@@ -190,7 +194,7 @@ angular.module('WordRiverApp')
         for (i = 0; i < checkedGroups.length; i++) {
           for (var j = 0; j < $scope.contextPacks.length; j++) {
             if ($scope.contextPacks[j].isChecked) {
-              console.log("Adding pack to: " + $scope.groupList[i]);
+              //console.log("Adding pack to: " + $scope.groupList[i]);
               $scope.groupList[i].groupContextPackArray.push($scope.contextPacks[j]);
             }
           }
