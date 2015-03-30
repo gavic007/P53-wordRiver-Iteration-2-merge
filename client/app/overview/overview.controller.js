@@ -144,52 +144,47 @@ angular.module('WordRiverApp')
     };
 
     $scope.isCheckedStudent = function() {
-      for(var i=0; i < $scope.studentList.length; i++){
+      for(var i = 0; i < $scope.studentList.length; i++){
         //console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
         return $scope.studentList[i].isChecked == true;
-      }
-    };
-
-    //isCheckedGroup
-    $scope.isCheckedGroup = function() {
-      for(var i=0; i < $scope.groupList.length; i++){
-        //console.log($scope.groupList[i].groupName + ": " + $scope.groupList[i].isChecked);
-        return $scope.groupList[i].isChecked == true;
-      }
-    };
-
-    $scope.isCheckedPack = function() {
-      for(var i=0; i < $scope.contextPacks.length; i++){
-        //console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
-        return $scope.contextPacks[i].isChecked == true;
       }
     };
 
     $scope.assignContextPack = function() {
       var checkedStudents = [];
       var checkedGroups = [];
-      var i = 0;
 
-      for(i = 0; i < $scope.studentList.length; i++) {
-        if($scope.studentList[i].isChecked) {
-          checkedStudents.push($scope.studentList[i]);
-        }
-      }
-
-      for(i = 0; i < checkedStudents.length; i++) {
-        for (var j = 0; j < $scope.contextPacks.length; j++) {
-          if ($scope.contextPacks[j].isChecked) {
-            //console.log("Adding pack to: " + $scope.studentList[i]);
-            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+      for(var i = 0; i < $scope.studentList.length; i++) {
+        for(var j = 0; j < $scope.contextPacks.length; j++) {
+          if($scope.studentList[i].isChecked) {
+            if($scope.contextPacks[j].isChecked) {
+              //$scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+              $scope.preventDuplication($scope.studentList[i].studentContextPackArray, $scope.contextPacks[j]);
+            }
           }
         }
       }
-        //Added functionality to assign Context Packs to Groups based on code above
-        for (i = 0; i < $scope.groupList.length; i++) {
-          if ($scope.groupList[i].isChecked) {
-            checkedGroups.push($scope.groupList[i]);
-          }
+      //for(var i = 0; i < $scope.studentList.length; i++) {
+      //  if($scope.studentList[i].isChecked) {
+      //    checkedStudents.push($scope.studentList[i]);
+      //  }
+      //}
+      //
+      //for(i = 0; i < checkedStudents.length; i++) {
+      //  for (var j = 0; j < $scope.contextPacks.length; j++) {
+      //    if ($scope.contextPacks[j].isChecked) {
+      //      //console.log("Adding pack to: " + $scope.studentList[i]);
+      //      $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+      //    }
+      //  }
+      //}
+
+      //Added functionality to assign Context Packs to Groups based on code above
+      for (i = 0; i < $scope.groupList.length; i++) {
+        if ($scope.groupList[i].isChecked) {
+          checkedGroups.push($scope.groupList[i]);
         }
+      }
 
         for (i = 0; i < checkedGroups.length; i++) {
           for (var j = 0; j < $scope.contextPacks.length; j++) {
@@ -200,4 +195,10 @@ angular.module('WordRiverApp')
           }
         }
       };
+
+    $scope.preventDuplication = function(array, item) {
+      if(array.indexOf(item) == -1) {
+        array.push(item)
+      }
+    };
   });
