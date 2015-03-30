@@ -151,33 +151,17 @@ angular.module('WordRiverApp')
     };
 
     $scope.assignContextPack = function() {
-      var checkedStudents = [];
       var checkedGroups = [];
 
       for(var i = 0; i < $scope.studentList.length; i++) {
         for(var j = 0; j < $scope.contextPacks.length; j++) {
           if($scope.studentList[i].isChecked) {
             if($scope.contextPacks[j].isChecked) {
-              //$scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
               $scope.preventDuplication($scope.studentList[i].studentContextPackArray, $scope.contextPacks[j]);
             }
           }
         }
       }
-      //for(var i = 0; i < $scope.studentList.length; i++) {
-      //  if($scope.studentList[i].isChecked) {
-      //    checkedStudents.push($scope.studentList[i]);
-      //  }
-      //}
-      //
-      //for(i = 0; i < checkedStudents.length; i++) {
-      //  for (var j = 0; j < $scope.contextPacks.length; j++) {
-      //    if ($scope.contextPacks[j].isChecked) {
-      //      //console.log("Adding pack to: " + $scope.studentList[i]);
-      //      $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
-      //    }
-      //  }
-      //}
 
       //Added functionality to assign Context Packs to Groups based on code above
       for (i = 0; i < $scope.groupList.length; i++) {
