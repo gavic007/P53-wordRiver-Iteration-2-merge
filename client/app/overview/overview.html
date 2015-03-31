@@ -72,13 +72,12 @@
         <br>
         <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index | orderBy: toSortForTiles:orderForTiles">
-          <li>{{tile}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
+          <li>{{tile.wordName}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
         </ul>
         <div ng-hide="showTileAdder">
           <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
         </div>
         <div ng-show="showTileAdder">
-
           <form ng-submit="addTile()" >
             <input ng-model="tileField" type="text" size="20" placeholder="add a tile!">
             <input type="submit" value="Add" class="btn btn-primary">
