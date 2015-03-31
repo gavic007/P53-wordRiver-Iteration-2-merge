@@ -16,6 +16,9 @@
         <input ng-model="wordField" type="text" size="50" placeholder="add a new item to the list!">
         <input type="submit" value="Add" class="btn btn-primary">
 
+        <!--added the sort alphabetically button here-->
+        <button class="btn btn-primary" ng-click="toSort = 'words'; order = !order">Sort Alphabetically</button>
+
         <!--<span class="floatRight">Items in this list: {{itemsInList()}}</span> -->
       </form>
     </li>
@@ -23,7 +26,8 @@
   <!--<ul>-->
     <!--<form name="addingWordsForm" action="checkboxes.asp" method="post">-->
       <!--<span><input type = "button" name ="CheckAll" value="Check All"></span>-->
-    <li class="list-group-item" ng-repeat="test in allWords"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label> <span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>
+    <!--added the sort alphabetically function here-->
+    <li class="list-group-item" ng-repeat="test in allWords | orderBy: toSort:order"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label> <span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>
 
       <!--<li class="list-group-item" ng-repeat="test in data">{{test.weight}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>-->
     <!--</form>-->

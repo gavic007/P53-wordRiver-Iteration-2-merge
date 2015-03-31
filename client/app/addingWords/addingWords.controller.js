@@ -10,6 +10,9 @@ angular.module('WordRiverApp')
 
     $scope.wordField = "";
 
+    //added the toSort value and order value that the sort ALphabetically functionality needed
+    $scope.toSort = "words";
+    $scope.order = true;
     //beforeEach(module('wordRiverTeamFtlApp'));
     //beforeEach(module('socketMock'));
 

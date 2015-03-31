@@ -91,14 +91,14 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: $scope.textField, tiles: []});
+        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
       }
       $scope.textField="";
     };
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push($scope.tileField);
+        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
 
         $http.patch('/api/packs/' + $scope.currentPack._id,
           {tiles: $scope.currentPack.tiles}
@@ -143,13 +143,6 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
-    $scope.isCheckedStudent = function() {
-      for(var i = 0; i < $scope.studentList.length; i++){
-        //console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
-        return $scope.studentList[i].isChecked == true;
-      }
-    };
-
     $scope.assignContextPack = function() {
       var checkedGroups = [];
 
@@ -179,6 +172,33 @@ angular.module('WordRiverApp')
           }
         }
       };
+
+    //$scope.orderBy = function (property) {
+    //  var sortOrder = 1;
+    //  if(property[0] === "-") {
+    //    sortOrder = -1;
+    //    property = property.substr(1);
+    //  }
+    //  return function (a,b) {
+    //    //var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+    //    var result = 0;
+    //    if (a[property] < b[property]) {
+    //      result = -1;
+    //    } else if (a[property] > b[property]) {
+    //      result=1;
+    //    } else {
+    //      result = 0;
+    //    }
+    //    return result * sortOrder;
+    //  }
+    //}
+
+
+    $scope.toSortForContextPacks = "packName";
+    $scope.orderForContextPacks = true;
+
+    $scope.toSortForTiles = "tiles";
+    $scope.orderForTiles = true;
 
     $scope.preventDuplication = function(array, item) {
       if(array.indexOf(item) == -1) {
