@@ -111,7 +111,7 @@ angular.module('WordRiverApp')
               console.log("after the 3 for statement in the pushWordsToStudents function");
                    $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
                    console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
-            }
+             }
           }
         }
       }
