@@ -100,17 +100,17 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: [{}]});
+        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
       }
       $scope.textField="";
     };
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push({wordName: ($scope.tileField).toLowerCase(), wordType: ""});
-        console.log($scope.currentPack.tiles);
+        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
+
         $http.patch('/api/packs/' + $scope.currentPack._id,
-          {tiles: [{wordName: $scope.currentPack.tiles.wordName, wordType: $scope.currentPack.tiles.wordType}]}
+          {tiles: $scope.currentPack.tiles}
         ).success(function(){
             console.log("Patch completed!");
             console.log($scope.contextPacks);
@@ -125,7 +125,7 @@ angular.module('WordRiverApp')
     };
 
     $scope.deleteTile = function(pack, index) {
-      pack.tiles.splice(index, 1);
+      pack.tiles.splice(index, 1)
       $http.patch('/api/packs/' + pack._id,
         {tiles: pack.tiles}
       ).success(function() {
@@ -151,9 +151,10 @@ angular.module('WordRiverApp')
       $scope.showStudent = true;
       $scope.currentStudent = student;
     };
-    //add context packs to students
+
     $scope.assignContextPack = function() {
       var checkedGroups = [];
+
       for(var i = 0; i < $scope.studentList.length; i++) {
         for(var j = 0; j < $scope.contextPacks.length; j++) {
           if($scope.studentList[i].isChecked) {
