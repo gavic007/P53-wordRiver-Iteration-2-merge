@@ -143,13 +143,6 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
-    $scope.isCheckedStudent = function() {
-      for(var i = 0; i < $scope.studentList.length; i++){
-        //console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
-        return $scope.studentList[i].isChecked == true;
-      }
-    };
-
     $scope.assignContextPack = function() {
       var checkedGroups = [];
 
