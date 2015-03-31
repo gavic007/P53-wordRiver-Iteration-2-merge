@@ -91,14 +91,14 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: $scope.textField, tiles: []});
+        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
       }
       $scope.textField="";
     };
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push($scope.tileField);
+        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
 
         $http.patch('/api/packs/' + $scope.currentPack._id,
           {tiles: $scope.currentPack.tiles}
@@ -143,53 +143,25 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
-    $scope.isCheckedStudent = function() {
-      for(var i=0; i < $scope.studentList.length; i++){
-        //console.log($scope.studentList[i].firstName + ": " + $scope.studentList[i].isChecked);
-        return $scope.studentList[i].isChecked == true;
-      }
-    };
-
-    //isCheckedGroup
-    $scope.isCheckedGroup = function() {
-      for(var i=0; i < $scope.groupList.length; i++){
-        //console.log($scope.groupList[i].groupName + ": " + $scope.groupList[i].isChecked);
-        return $scope.groupList[i].isChecked == true;
-      }
-    };
-
-    $scope.isCheckedPack = function() {
-      for(var i=0; i < $scope.contextPacks.length; i++){
-        //console.log($scope.contextPacks[i].name + ": " + $scope.contextPacks[i].isChecked);
-        return $scope.contextPacks[i].isChecked == true;
-      }
-    };
-
     $scope.assignContextPack = function() {
-      var checkedStudents = [];
       var checkedGroups = [];
-      var i = 0;
 
-      for(i = 0; i < $scope.studentList.length; i++) {
-        if($scope.studentList[i].isChecked) {
-          checkedStudents.push($scope.studentList[i]);
-        }
-      }
-
-      for(i = 0; i < checkedStudents.length; i++) {
-        for (var j = 0; j < $scope.contextPacks.length; j++) {
-          if ($scope.contextPacks[j].isChecked) {
-            //console.log("Adding pack to: " + $scope.studentList[i]);
-            $scope.studentList[i].studentContextPackArray.push($scope.contextPacks[j]);
+      for(var i = 0; i < $scope.studentList.length; i++) {
+        for(var j = 0; j < $scope.contextPacks.length; j++) {
+          if($scope.studentList[i].isChecked) {
+            if($scope.contextPacks[j].isChecked) {
+              $scope.preventDuplication($scope.studentList[i].studentContextPackArray, $scope.contextPacks[j]);
+            }
           }
         }
       }
-        //Added functionality to assign Context Packs to Groups based on code above
-        for (i = 0; i < $scope.groupList.length; i++) {
-          if ($scope.groupList[i].isChecked) {
-            checkedGroups.push($scope.groupList[i]);
-          }
+
+      //Added functionality to assign Context Packs to Groups based on code above
+      for (i = 0; i < $scope.groupList.length; i++) {
+        if ($scope.groupList[i].isChecked) {
+          checkedGroups.push($scope.groupList[i]);
         }
+      }
 
         for (i = 0; i < checkedGroups.length; i++) {
           for (var j = 0; j < $scope.contextPacks.length; j++) {
@@ -200,4 +172,37 @@ angular.module('WordRiverApp')
           }
         }
       };
+
+    //$scope.orderBy = function (property) {
+    //  var sortOrder = 1;
+    //  if(property[0] === "-") {
+    //    sortOrder = -1;
+    //    property = property.substr(1);
+    //  }
+    //  return function (a,b) {
+    //    //var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+    //    var result = 0;
+    //    if (a[property] < b[property]) {
+    //      result = -1;
+    //    } else if (a[property] > b[property]) {
+    //      result=1;
+    //    } else {
+    //      result = 0;
+    //    }
+    //    return result * sortOrder;
+    //  }
+    //}
+
+
+    $scope.toSortForContextPacks = "packName";
+    $scope.orderForContextPacks = true;
+
+    $scope.toSortForTiles = "tiles";
+    $scope.orderForTiles = true;
+
+    $scope.preventDuplication = function(array, item) {
+      if(array.indexOf(item) == -1) {
+        array.push(item)
+      }
+    };
   });
