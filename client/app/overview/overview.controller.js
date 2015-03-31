@@ -56,8 +56,8 @@ angular.module('WordRiverApp')
     $scope.getPacks = function() {
       $http.get('/api/users/me').success(function (user) {
         $scope.contextPacks = user.contextPacks;
-        socket.syncUpdates('user', $scope.contextPacks);
-        console.log($scope.contextPacks);
+        //socket.syncUpdates('user', $scope.contextPacks);
+        //console.log($scope.contextPacks);
       });
     };
 
@@ -187,7 +187,7 @@ angular.module('WordRiverApp')
     $scope.toSortForContextPacks = "contextName";
     $scope.orderForContextPacks = true;
 
-    $scope.toSortForTiles = "tile";
+    $scope.toSortForTiles = "contents.wordName";
     $scope.orderForTiles = true;
 
     $scope.preventDuplication = function(array, item) {
