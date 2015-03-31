@@ -3,7 +3,7 @@
 describe('Controller: OverviewCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('wordRiverSpaceshipParrotIteration1App'));
+  beforeEach(module('WordRiverApp'));
   beforeEach(module('socketMock'));
 
   var OverviewCtrl,
@@ -27,10 +27,13 @@ describe('Controller: OverviewCtrl', function () {
   it('this is a sanity check', function () {
     expect(true).toBe(true);
   });
-  //it('should attach a list of things to the scope', function () {
-  //  $httpBackend.flush();
-  //  expect(scope.awesomeThings.length).toBe(4);
-  //});
+
+  it('should test confirm delete', function () {
+    scope.contextArray = [];
+    scope.contextArray.push(scope.addContextPacks({packName: "Love"}));
+    scope.confirmDelete(0);
+    expect(scope.contextArray.toBeTruthy("Love"));
+  });
 
   //These tests don't test functionality, they should probably be removed. -Lemmon
   //it('should be things in the list i.e. heroPack, zoo, biomes, cars, disney', function () {
