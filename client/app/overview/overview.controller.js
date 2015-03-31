@@ -54,13 +54,16 @@ angular.module('WordRiverApp')
 
 
     $scope.getPacks = function() {
-      $http.get('/api/packs').success(function (contextPack) {
-        $scope.contextPacks = contextPack;
-        socket.syncUpdates('pack', $scope.contextPacks);
+      $http.get('/api/users/me').success(function (user) {
+        $scope.contextPacks = user.contextPacks;
+        socket.syncUpdates('user', $scope.contextPacks);
+        console.log($scope.contextPacks);
       });
     };
 
     $scope.getPacks();
+
+
 
     //This deletes just the context pack for students
     $scope.confirmDeleteStudentPack = function(index) {
@@ -76,7 +79,7 @@ angular.module('WordRiverApp')
     //This deletes context pack from the database
     $scope.confirmDelete = function(index) {
       this.index = index;
-      if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].packName + "?") == true) {
+      if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].contextName + "?") == true) {
         $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
       }
 
@@ -91,14 +94,14 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
+        $http.post('/api/users/me', {contextName: ($scope.textField).toLowerCase(), contents: []});
       }
       $scope.textField="";
     };
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
+        $scope.currentPack.contents.push(($scope.tileField).toLowerCase());
 
         $http.patch('/api/packs/' + $scope.currentPack._id,
           {tiles: $scope.currentPack.tiles}
@@ -180,31 +183,11 @@ angular.module('WordRiverApp')
         }
       };
 
-    //$scope.orderBy = function (property) {
-    //  var sortOrder = 1;
-    //  if(property[0] === "-") {
-    //    sortOrder = -1;
-    //    property = property.substr(1);
-    //  }
-    //  return function (a,b) {
-    //    //var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-    //    var result = 0;
-    //    if (a[property] < b[property]) {
-    //      result = -1;
-    //    } else if (a[property] > b[property]) {
-    //      result=1;
-    //    } else {
-    //      result = 0;
-    //    }
-    //    return result * sortOrder;
-    //  }
-    //}
 
-
-    $scope.toSortForContextPacks = "packName";
+    $scope.toSortForContextPacks = "contextName";
     $scope.orderForContextPacks = true;
 
-    $scope.toSortForTiles = "tiles";
+    $scope.toSortForTiles = "tile";
     $scope.orderForTiles = true;
 
     $scope.preventDuplication = function(array, item) {
