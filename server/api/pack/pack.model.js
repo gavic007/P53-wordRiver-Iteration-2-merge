@@ -5,7 +5,10 @@ var mongoose = require('mongoose'),
 
 var PackSchema = new Schema({
   packName: String,
-  tiles: [String]
+  tiles: [{
+    wordName: String,
+    wordType: String
+  }]
 });
 
 module.exports = mongoose.model('Pack', PackSchema);

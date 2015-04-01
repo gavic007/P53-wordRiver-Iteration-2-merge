@@ -28,6 +28,13 @@ describe('Controller: OverviewCtrl', function () {
     expect(true).toBe(true);
   });
 
+  it('should test confirm delete', function () {
+    scope.contextArray = [];
+    scope.contextArray.push(scope.addContextPacks({packName: "Love"}));
+    scope.confirmDelete(0);
+    expect(scope.contextArray.toBeTruthy("Love"));
+  });
+
   it('should prevent a duplicates from being added to an array', function () {
     var test = ["stuff", "more", "people"];
     scope.preventDuplication(test, "people");

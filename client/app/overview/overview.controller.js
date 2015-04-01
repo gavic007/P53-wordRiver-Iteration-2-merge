@@ -70,17 +70,26 @@ angular.module('WordRiverApp')
       }
       console.log($scope.studentList[index]);
       //console.log($scope.studentList[index].studentContextPackArray[index]);
-
     };
 
+
     //This deletes context pack from the database
+    $scope.deletePack = function(index) {
+      this.index = index;
+      $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
+    };
+
+
     $scope.confirmDelete = function(index) {
       this.index = index;
       if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].packName + "?") == true) {
-        $http.delete('/api/packs/' + $scope.contextPacks[index]._id)
+        $scope.deletePack(index);
       }
-
     };
+
+
+
+
     //$scope.deleteTile = function(pack,index) {
     //  return pack.splice(index, 1);
     //};
@@ -98,7 +107,11 @@ angular.module('WordRiverApp')
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
+        var tiles =  {
+          wordName: ($scope.tileField).toLowerCase(),
+          wordType: "weee"
+        };
+        $scope.currentPack.tiles.push(tiles);
 
         $http.patch('/api/packs/' + $scope.currentPack._id,
           {tiles: $scope.currentPack.tiles}
@@ -155,7 +168,7 @@ angular.module('WordRiverApp')
           }
         }
       }
-
+      console.log($scope.studentContextPackArray);
       //Added functionality to assign Context Packs to Groups based on code above
       for (i = 0; i < $scope.groupList.length; i++) {
         if ($scope.groupList[i].isChecked) {
