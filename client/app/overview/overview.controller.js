@@ -109,7 +109,7 @@ angular.module('WordRiverApp')
       if ($scope.tileField.length >= 1) {
         var tiles =  {
           wordName: ($scope.tileField).toLowerCase(),
-          wordType: "weee"
+          wordType: ""
         };
         $scope.currentPack.tiles.push(tiles);
 
