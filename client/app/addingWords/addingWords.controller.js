@@ -112,23 +112,21 @@ angular.module('WordRiverApp')
         for (var j = 0; j < $scope.checkedStudents.length; j++) {
           //console.log("after the second statement in the pushWordsToStudents function");
           if (name == ($scope.checkedStudents[j])) {
-             for (var k = 0; k < $scope.checkedWords.length; k++) {
-               console.log($scope.students[i].studentWordArray + " " + $scope.students[i].studentWordArray.length);
-               if($scope.students[i].studentWordArray.length > 0){
-                 for ( var l = 0; l < $scope.students[i].studentWordArray.length; l++) {
-                   if ($scope.students[i].studentWordArray[l] != $scope.checkedWords[k]) {
-                    $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
-                     console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
-                 }
-                 }
-               }
-               else {
-                 $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
-                 console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part????????????????      " + $scope.students[i].studentWordArray);
-               }
-             }
+             //for (var k = 0; k < $scope.checkedWords.length; k++) {
+            for (var k = 0; k < $scope.checkedWords.length; k++) {
+
+              $scope.preventDuplication($scope.students[i].studentWordArray, $scope.checkedWords[k]);
+              console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
+
+            }
           }
         }
+      }
+    };
+
+    $scope.preventDuplication = function(array, item) {
+      if(array.indexOf(item) == -1) {
+        array.push(item)
       }
     };
 
