@@ -81,11 +81,14 @@ angular.module('WordRiverApp')
         console.log(object.words);
       }
       else if (object.value == false) {
+        for(var i = 0; i < $scope.checkedWords.length; i++){
+          if(object.words == $scope.checkedWords[i]){
+            $scope.checkedWords.splice(i, 1);
+          }
+        }
         console.log("false");
-        $scope.checkedWords.splice(object.words);
-            // this isn't working correctly. it will get rid of all words in the array after one is "made false" or not clicked
-            //I got the information at this site http://stackoverflow.com/questions/5767325/remove-specific-element-from-an-array
-            //http://stackoverflow.com/questions/17324972/how-to-remove-the-unchecked-item-from-array-using-jquery  may also help
+
+           //pop off the end, not what we want
       }
     };
 
@@ -109,11 +112,20 @@ angular.module('WordRiverApp')
         for (var j = 0; j < $scope.checkedStudents.length; j++) {
           //console.log("after the second statement in the pushWordsToStudents function");
           if (name == ($scope.checkedStudents[j])) {
-            console.log("after the if statement in the pushWordsToStudents function");
              for (var k = 0; k < $scope.checkedWords.length; k++) {
-              console.log("after the 3 for statement in the pushWordsToStudents function");
-                   $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
-                   console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
+               console.log($scope.students[i].studentWordArray + " " + $scope.students[i].studentWordArray.length);
+               if($scope.students[i].studentWordArray.length > 0){
+                 for ( var l = 0; l < $scope.students[i].studentWordArray.length; l++) {
+                   if ($scope.students[i].studentWordArray[l] != $scope.checkedWords[k]) {
+                    $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
+                     console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
+                 }
+                 }
+               }
+               else {
+                 $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
+                 console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part????????????????      " + $scope.students[i].studentWordArray);
+               }
              }
           }
         }
@@ -143,7 +155,11 @@ angular.module('WordRiverApp')
       }
         else if(object.value == false){
            console.log("false");
-            $scope.checkedWords.splice(object.student);    // same problem with the allCheckedWords above.
+          for(var i = 0 ; i < $scope.checkedStudents.length; i++) {
+            if ($scope.checkedStudents[i] == object.student) {
+              $scope.checkedStudents.splice(i, 1);    // same problem with the allCheckedWords above.
+            }
+          }
        }
     };
 
