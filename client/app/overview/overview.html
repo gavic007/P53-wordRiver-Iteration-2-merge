@@ -23,8 +23,6 @@
       </ul>
     </div>
 
-
-
 <!-- this is show student -->
     <div class="col-xs-2">
       <div ng-show="showStudent">
@@ -49,7 +47,7 @@
     <!-- this is the context packs -->
     <div class="col-xs-2">
       <h1 class="page-header">Context Packs:</h1>
-      <button class="btn btn-primary" ng-click="toSortForContextPacks = 'packName'; orderForContextPacks = !orderForContextPacks">Sort Alphabetically</button>
+      <!--<button class="btn btn-primary" ng-click="toSortForContextPacks = 'packName'; orderForContextPacks = !orderForContextPacks">Sort Alphabetically</button>-->
       <br>
       <br>
       <ul class="list-group">
@@ -60,8 +58,7 @@
           </form>
         </li>
 
-        <li class="list-group-item" ng-repeat="pack in contextPacks | orderBy: toSortForContextPacks:orderForContextPacks">
-
+        <li class="list-group-item" ng-repeat="pack in contextPacks">
           <label><input type="checkbox"  ng-model = "pack.isChecked"><a href="" ng-click="packInfo(pack)">{{pack.packName}}</a></label>
           <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDelete($index)">&times;</button>
       </ul>
@@ -71,10 +68,10 @@
     <div class="col-xs-3">
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
-        <button class="btn btn-primary" ng-click="toSortForTiles = 'tiles'; orderForTiles = !orderForTiles">Sort Alphabetically</button>
+        <!--<button class="btn btn-primary" ng-click="toSortForTiles = 'tiles'; orderForTiles = !orderForTiles">Sort Alphabetically</button>-->
         <br>
         <br>
-        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index | orderBy: toSortForTiles:orderForTiles">
+        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
           <li>{{tile.wordName}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
         </ul>
         <div ng-hide="showTileAdder">
@@ -82,15 +79,14 @@
         </div>
         <div ng-show="showTileAdder">
           <form ng-submit="addTile()" >
-            <input ng-model="tileField" type="text" size="20" placeholder="add a tile!">
+            <input ng-model="tileField" type="text" size="10" placeholder="add a tile!">
+            <input ng-model="wordTypeField" type="text" size="10" placeholder="add a word type!">
             <input type="submit" value="Add" class="btn btn-primary">
             <button type="button" class="btn btn-link" ng-click="toggleShowAdder()">Done</button>
           </form>
 
         </div>
       </div>
-
-
     </div>
 
 

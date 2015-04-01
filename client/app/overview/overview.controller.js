@@ -7,6 +7,7 @@ angular.module('WordRiverApp')
 
     $scope.textField = "";
     $scope.tileField = "";
+    $scope.wordTypeField = "";
 
     $scope.showPack = false;
     $scope.currentPack = null;
@@ -18,7 +19,6 @@ angular.module('WordRiverApp')
     $scope.studentPacks = [];
 
     $scope.isChecked = false;
-   // $scope.pack.isChecked = null;
 
     $http.get('/api/students').success(function(studentList) {
       $scope.studentList = studentList;
@@ -109,7 +109,7 @@ angular.module('WordRiverApp')
       if ($scope.tileField.length >= 1) {
         var tiles =  {
           wordName: ($scope.tileField).toLowerCase(),
-          wordType: ""
+          wordType: ($scope.wordTypeField).toLowerCase()
         };
         $scope.currentPack.tiles.push(tiles);
 
