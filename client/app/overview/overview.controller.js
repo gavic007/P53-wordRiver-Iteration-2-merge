@@ -107,7 +107,11 @@ angular.module('WordRiverApp')
 
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
-        $scope.currentPack.tiles.push(($scope.tileField).toLowerCase());
+        var tiles =  {
+          wordName: ($scope.tileField).toLowerCase(),
+          wordType: "weee"
+        };
+        $scope.currentPack.tiles.push(tiles);
 
         $http.patch('/api/packs/' + $scope.currentPack._id,
           {tiles: $scope.currentPack.tiles}
@@ -164,7 +168,7 @@ angular.module('WordRiverApp')
           }
         }
       }
-
+      console.log($scope.studentContextPackArray);
       //Added functionality to assign Context Packs to Groups based on code above
       for (i = 0; i < $scope.groupList.length; i++) {
         if ($scope.groupList[i].isChecked) {
