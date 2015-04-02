@@ -220,9 +220,10 @@ angular.module('WordRiverApp')
         } else {
           result = 0;
         }
+        console.log("asdfasdfasdfasdf");
         return result * sortOrder;
       }
-    }
+    };
 
 
     $scope.toSortForContextPacks = "packName";

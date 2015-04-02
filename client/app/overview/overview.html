@@ -72,7 +72,7 @@
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
         <!--<button class="btn btn-primary" ng-click="toSortForTiles = 'tiles'; orderForTiles = !orderForTiles">Sort Alphabetically</button>-->
-        <button class="btn btn-primary" ng-click="contextPacks.tiles.sort(orderBy('wordType'))">Sort Alphabetically</button>
+        <!--<button class="btn btn-primary" ng-click="contextPacks.tiles.sort(orderBy('wordName'))">Sort Alphabetically</button>-->
         <br>
         <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
