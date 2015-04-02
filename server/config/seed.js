@@ -524,7 +524,7 @@ Student.find({}).remove(function() {
       "lastName": "Pratt",
       "id": "0001",
       "studentContextPackArray": [],
-      "studentWordArray": []
+      "studentWordArray": ["bicycle"]
     },
     {
       "firstName": "Battle",

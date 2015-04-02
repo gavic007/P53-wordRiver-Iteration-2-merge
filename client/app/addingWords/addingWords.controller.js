@@ -26,10 +26,7 @@ angular.module('WordRiverApp')
     $scope.getWords();
 
     $scope.addWords = function () {
-      //console.log("adding words function before if statement");
       if ($scope.wordField.length >= 1) {
-        // console.log("adding words function after if statement");
-        <!--these words will be going into the individuals page, possibly the class words, and added to her program (words they can use) -->
         $http.post('api/AddingWordsDatabases', {words: $scope.wordField}).success(function () {
           console.log("allCheckedWords function after post statement");
           $scope.getWords();
@@ -84,32 +81,52 @@ angular.module('WordRiverApp')
         console.log(object.words);
       }
       else if (object.value == false) {
+        for(var i = 0; i < $scope.checkedWords.length; i++){
+          if(object.words == $scope.checkedWords[i]){
+            $scope.checkedWords.splice(i, 1);
+          }
+        }
         console.log("false");
+
+           //pop off the end, not what we want
       }
     };
 
-// This was showing the array for a bit so I do think its finally getting into the array, but something with the if
-    // statement is screwing it up. when it was working it only did the first thing clicked
+    // I'm not sure if it is sticking in the database but it is getting to the studentWordArray now and pushing the words in there.
+    // big problem is that it does allow duplicate words to be entered into the studentWordArray (I tried to fix this at one point but
+    //it wouldnt continue through the function. I may have done it wrong.
+    //http://www.w3schools.com/jsref/jsref_string.asp
+    //http://stackoverflow.com/questions/3473639/best-way-to-convert-string-to-array-of-object-in-javascript
+    //http://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
+
     $scope.pushWordsToStudents = function () {
       //console.log("before the for statement in the pushWordsToStudents function");
-      console.log($scope.students);  // this is showing object, object, object...     PROBLEM!!!!!!!!!!!!!!!
+      console.log($scope.students);
       console.log($scope.checkedWords);
-      // this  is correctly shows all checked words in an array. it doesnt get rid of words when unchecked from the checked words array. but it also doesnt duplicate
+               // if you uncheck something it gets rid of the whole array which is a problem. doesn't duplicate
       console.log($scope.checkedStudents);
-      //this is correctly showing all checked students in an array. doesnt get rid of unchecked students but doesnt duplicate
+               //if you uncheck something it gets rid of the whole array which is a problem. doesn't duplicate
       for (var i = 0; i < $scope.students.length; i++) {
         //console.log("after the first for statement in the pushWordsToStudents function");
+        var name = $scope.students[i].firstName + " " + $scope.students[i].lastName;
         for (var j = 0; j < $scope.checkedStudents.length; j++) {
           //console.log("after the second statement in the pushWordsToStudents function");
-          for (var k = 0; k < $scope.checkedWords.length; k++) {
-            //console.log("after the third statement in the pushWordsToStudents function");
-            if ($scope.students[i] == $scope.checkedStudents[j]) {
-              console.log("after the if statement in the pushWordsToStudents function");
-              $scope.students[i].studentWordArray.push($scope.checkedWords[k]);
-              console.log($scope.students[i].studentWordArray);
+          if (name == ($scope.checkedStudents[j])) {
+             //for (var k = 0; k < $scope.checkedWords.length; k++) {
+            for (var k = 0; k < $scope.checkedWords.length; k++) {
+
+              $scope.preventDuplication($scope.students[i].studentWordArray, $scope.checkedWords[k]);
+              console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
+
             }
           }
         }
+      }
+    };
+
+    $scope.preventDuplication = function(array, item) {
+      if(array.indexOf(item) == -1) {
+        array.push(item)
       }
     };
 
@@ -136,6 +153,11 @@ angular.module('WordRiverApp')
       }
         else if(object.value == false){
            console.log("false");
+          for(var i = 0 ; i < $scope.checkedStudents.length; i++) {
+            if ($scope.checkedStudents[i] == object.student) {
+              $scope.checkedStudents.splice(i, 1);    // same problem with the allCheckedWords above.
+            }
+          }
        }
     };
 
