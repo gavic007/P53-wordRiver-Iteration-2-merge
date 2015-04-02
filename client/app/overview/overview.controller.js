@@ -128,6 +128,14 @@ angular.module('WordRiverApp')
       }
     };
 
+    $scope.confirmTileDelete = function (pack, index) {
+      this.pack = pack;
+      this.index = index;
+      if (confirm("Are you sure you want to delete this tile?") == true) {
+        $scope.deleteTile(pack, index);
+      }
+    };
+
     $scope.deleteTile = function(pack, index) {
       pack.tiles.splice(index, 1)
       $http.patch('/api/packs/' + pack._id,

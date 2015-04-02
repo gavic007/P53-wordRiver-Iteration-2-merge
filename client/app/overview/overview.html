@@ -18,8 +18,9 @@
     <div class="col-xs-2">
       <input type="submit" value="Assign Context Pack" class="btn btn-primary" ng-click="assignContextPack()">
       <h1 class="page-header">Students:</h1>
-      <button class="btn btn-primary" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
-      <button class="btn btn-primary" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
+      <p>Sort Students by last name:</p>
+      <button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
+      <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
       <br>
       <br>
       <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
@@ -31,8 +32,9 @@
     <div class="col-xs-2">
       <div ng-show="showStudent">
         <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
-        <button class="btn btn-primary" ng-click="currentStudent.studentContextPackArray.sort(orderBy('packName'))">A-Z</button>
-        <button class="btn btn-primary" ng-click="currentStudent.studentContextPackArray.sort(orderBy('-packName'))">Z-A</button>
+        <p>Sort Context Packs:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="currentStudent.studentContextPackArray.sort(orderBy('packName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="currentStudent.studentContextPackArray.sort(orderBy('-packName'))">Z-A</button>
         <br>
         <br>
         <ul class="list-group">
@@ -55,9 +57,9 @@
     <!-- this is the context packs -->
     <div class="col-xs-2">
       <h1 class="page-header">Context Packs:</h1>
-      <!--<button class="btn btn-primary" ng-click="toSortForContextPacks = 'packName'; orderForContextPacks = !orderForContextPacks">Sort Alphabetically</button>-->
-      <button class="btn btn-primary" ng-click="contextPacks.sort(orderBy('packName'))">A-Z</button>
-      <button class="btn btn-primary" ng-click="contextPacks.sort(orderBy('-packName'))">Z-A</button>
+      <p>Sort Context Packs:</p>
+      <button class="btn btn-primary" title="Sort A-Z" ng-click="contextPacks.sort(orderBy('packName'))">A-Z</button>
+      <button class="btn btn-primary" title="Sort Z-A" ng-click="contextPacks.sort(orderBy('-packName'))">Z-A</button>
 
       <br>
       <br>
@@ -79,14 +81,13 @@
     <div class="col-xs-3">
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
-        <!--<button class="btn btn-primary" ng-click="toSortForTiles = 'tiles'; orderForTiles = !orderForTiles">Sort Alphabetically</button>-->
-        <!--<button class="btn btn-primary" ng-click="contextPacks.tiles.sort(orderBy('wordName'))">Sort Alphabetically</button>-->
-        <button class="btn btn-primary" ng-click="currentPack.tiles.sort(orderBy('wordName'))">A-Z</button>
-        <button class="btn btn-primary" ng-click="currentPack.tiles.sort(orderBy('-wordName'))">Z-A</button>
+        <p>Sort Tiles:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="currentPack.tiles.sort(orderBy('wordName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="currentPack.tiles.sort(orderBy('-wordName'))">Z-A</button>
         <br>
         <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
-          <li>{{tile.wordName}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
+          <li>{{tile.wordName}}<button type="button" class="close" title="Delete Tile" ng-click="confirmTileDelete(currentPack, $index)">&times;</button></li>
         </ul>
         <div ng-hide="showTileAdder">
           <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
@@ -109,8 +110,9 @@
     <div class="row">
       <div class="col-xs-3">
         <h1 class="page-header">Groups:</h1>
-        <button class="btn btn-primary" ng-click="groupList.sort(orderBy('groupName'))">A-Z</button>
-        <button class="btn btn-primary" ng-click="groupList.sort(orderBy('-groupName'))">Z-A</button>
+        <p>Sort Groups:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="groupList.sort(orderBy('groupName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="groupList.sort(orderBy('-groupName'))">Z-A</button>
         <br>
         <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
