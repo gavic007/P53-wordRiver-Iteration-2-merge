@@ -100,7 +100,7 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
+        $http.post('/api/packs', {packName: ($scope.textField), tiles: []});
       }
       $scope.textField="";
     };
@@ -108,8 +108,8 @@ angular.module('WordRiverApp')
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
         var tiles =  {
-          wordName: ($scope.tileField).toLowerCase(),
-          wordType: ($scope.wordTypeField).toLowerCase()
+          wordName: ($scope.tileField),
+          wordType: ($scope.wordTypeField)
         };
         $scope.currentPack.tiles.push(tiles);
 

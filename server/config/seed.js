@@ -19,7 +19,7 @@ User.find({}).remove(function() {
       "password": "deserunt",
       "provider": "local",
       "contextPacks": [{
-        "contextName": "nouns",
+        "contextName": "Nouns",
         "contents":[
           {"wordName": "house",
             "wordType": "noun",
@@ -539,7 +539,7 @@ Student.find({}).remove(function() {
         {"wordName": "in",
           "wordType": "Sight-word"}
       ]},
-        {"packName": "nouns",
+        {"packName": "Nouns",
         "tiles":[
           {"wordName": "house",
             "wordType": "noun"},
@@ -610,7 +610,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
       "tiles":[
       {"wordName": "house",
         "wordType": "noun"},
@@ -682,7 +682,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
           "tiles":[
             {"wordName": "house",
               "wordType": "noun"},
@@ -752,7 +752,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
           "tiles":[
             {"wordName": "house",
               "wordType": "noun"},
@@ -822,7 +822,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
           "tiles":[
             {"wordName": "house",
               "wordType": "noun"},
@@ -892,7 +892,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
           "tiles":[
             {"wordName": "house",
               "wordType": "noun"},
@@ -962,7 +962,7 @@ Student.find({}).remove(function() {
             "wordType": "Sight-word"}
         ]
       },
-        {"packName": "nouns",
+        {"packName": "Nouns",
           "tiles":[
             {"wordName": "house",
               "wordType": "noun"},
