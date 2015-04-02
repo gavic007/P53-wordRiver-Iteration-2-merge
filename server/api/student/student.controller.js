@@ -45,7 +45,19 @@ exports.update = function(req, res) {
   Student.findById(req.params.id, function (err, student) {
     if (err) { return handleError(res, err); }
     if(!student) { return res.send(404); }
-    var updated = _.merge(student, req.body);
+
+    //var updated = _.merge(student, req.body);
+    // Merging request body and pack from DB. Special callback for arrays!
+    var updated = _.merge(student, req.body, function(a, b) {
+      if(_.isArray(a)) {
+        //return arrayUnique(a.concat(b));
+        return b;
+      } else {
+        // returning undefined lets _.merge use its default merging methods, rather than this callback.
+        return undefined;
+      }
+    });
+
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, student);
