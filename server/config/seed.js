@@ -130,161 +130,54 @@ User.find({}).remove(function() {
 
       "studentGroups": [
         {
-          "groupName": "aliquip",
+          "groupName": "A-Team",
           "students": [
             {
-              "name": "Banks"
+              "name": "Liza P."
             },
             {
-              "name": "Wiley"
-            },
-            {
-              "name": "Juliana"
-            },
-            {
-              "name": "Allen"
-            },
-            {
-              "name": "Mayo"
-            },
-            {
-              "name": "Keller"
+              "name": "Shanna B."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "anim",
+          "groupName": "B-Team",
           "students": [
             {
-              "name": "Cochran"
+              "name": "Battle W."
             },
             {
-              "name": "Vasquez"
-            },
-            {
-              "name": "Rose"
-            },
-            {
-              "name": "Lynne"
-            },
-            {
-              "name": "Castillo"
-            },
-            {
-              "name": "Lora"
+              "name": "Calderon D."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "do",
+          "groupName": "C-Team",
           "students": [
             {
-              "name": "Angelica"
+              "name": "Leanna G."
             },
             {
-              "name": "Slater"
-            },
-            {
-              "name": "Mays"
-            },
-            {
-              "name": "Jean"
-            },
-            {
-              "name": "Mcknight"
-            },
-            {
-              "name": "Mckee"
+              "name": "Cassie R."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "officia",
+          "groupName": "D-Team",
           "students": [
             {
-              "name": "Stafford"
-            },
-            {
-              "name": "Bishop"
-            },
-            {
-              "name": "Liliana"
-            },
-            {
-              "name": "Lloyd"
-            },
-            {
-              "name": "Beasley"
-            },
-            {
-              "name": "Peggy"
+              "name": "Sherman F."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
-        {
-          "groupName": "exercitation",
-          "students": [
-            {
-              "name": "Erickson"
-            },
-            {
-              "name": "Tracie"
-            },
-            {
-              "name": "Leila"
-            },
-            {
-              "name": "Lacy"
-            },
-            {
-              "name": "Jolene"
-            },
-            {
-              "name": "Chen"
-            },
-            {
-              "name": "Hammond"
-            }
-          ],
-          "groupContextPackArray": [],
-          "groupWordArray": []
-        },
-        {
-          "groupName": "ut",
-          "students": [
-            {
-              "name": "Saunders"
-            },
-            {
-              "name": "Geraldine"
-            },
-            {
-              "name": "Bender"
-            },
-            {
-              "name": "Cantrell"
-            },
-            {
-              "name": "Miles"
-            },
-            {
-              "name": "Gilliam"
-            },
-            {
-              "name": "Mcfadden"
-            }
-          ],
-          "groupContextPackArray": [],
-          "groupWordArray": []
-        }
       ]
     },
     {
