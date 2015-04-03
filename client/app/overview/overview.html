@@ -18,6 +18,11 @@
     <div class="col-xs-2">
       <input type="submit" value="Assign Context Pack" class="btn btn-primary" ng-click="assignContextPack()">
       <h1 class="page-header">Students:</h1>
+      <p>Sort Students by last name:</p>
+      <button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
+      <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
+      <br>
+      <br>
       <ul class="nav nav-tabs nav-stacked" ng-repeat="student in studentList">
         <li><label><input type="checkbox" ng-model = "student.isChecked" ><a href="" ng-click="studentInfo(student)" tooltip="{{student.lastName}}">{{student.firstName}}&nbsp{{student.lastName}}</a></label></li>
       </ul>
@@ -27,6 +32,11 @@
     <div class="col-xs-2">
       <div ng-show="showStudent">
         <h1 class="page-header">Student Name: {{currentStudent.firstName}}&nbsp{{currentStudent.lastName}}</h1>
+        <p>Sort Context Packs:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="currentStudent.studentContextPackArray.sort(orderBy('packName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="currentStudent.studentContextPackArray.sort(orderBy('-packName'))">Z-A</button>
+        <br>
+        <br>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="pack in currentStudent.studentContextPackArray track by $index">
             <a href="" ng-click="packInfo(pack)">{{pack.packName}}</a>
@@ -47,7 +57,10 @@
     <!-- this is the context packs -->
     <div class="col-xs-2">
       <h1 class="page-header">Context Packs:</h1>
-      <!--<button class="btn btn-primary" ng-click="toSortForContextPacks = 'packName'; orderForContextPacks = !orderForContextPacks">Sort Alphabetically</button>-->
+      <p>Sort Context Packs:</p>
+      <button class="btn btn-primary" title="Sort A-Z" ng-click="contextPacks.sort(orderBy('packName'))">A-Z</button>
+      <button class="btn btn-primary" title="Sort Z-A" ng-click="contextPacks.sort(orderBy('-packName'))">Z-A</button>
+
       <br>
       <br>
       <ul class="list-group">
@@ -68,19 +81,21 @@
     <div class="col-xs-3">
       <div ng-show="showPack">
         <h1 class="page-header">Tiles in {{currentPack.packName}}:</h1>
-        <!--<button class="btn btn-primary" ng-click="toSortForTiles = 'tiles'; orderForTiles = !orderForTiles">Sort Alphabetically</button>-->
+        <p>Sort Tiles:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="currentPack.tiles.sort(orderBy('wordName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="currentPack.tiles.sort(orderBy('-wordName'))">Z-A</button>
         <br>
         <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="tile in currentPack.tiles track by $index">
-          <li>{{tile.wordName}}<button type="button" class="close" ng-click="deleteTile(currentPack, $index)">&times;</button></li>
+          <li>{{tile.wordName}}<button type="button" class="close" title="Delete Tile" ng-click="confirmTileDelete(currentPack, $index)">&times;</button></li>
         </ul>
         <div ng-hide="showTileAdder">
           <a href="#" ng-click="toggleShowAdder()">Add a card...</a>
         </div>
         <div ng-show="showTileAdder">
           <form ng-submit="addTile()" >
-            <input ng-model="tileField" type="text" size="10" placeholder="add a tile!">
-            <input ng-model="wordTypeField" type="text" size="10" placeholder="add a word type!">
+            <input ng-model="tileField" type="text" size="8" placeholder="add a tile!">
+            <input ng-model="wordTypeField" type="text" size="12" placeholder="add a word type!">
             <input type="submit" value="Add" class="btn btn-primary">
             <button type="button" class="btn btn-link" ng-click="toggleShowAdder()">Done</button>
           </form>
@@ -95,6 +110,11 @@
     <div class="row">
       <div class="col-xs-3">
         <h1 class="page-header">Groups:</h1>
+        <p>Sort Groups:</p>
+        <button class="btn btn-primary" title="Sort A-Z" ng-click="groupList.sort(orderBy('groupName'))">A-Z</button>
+        <button class="btn btn-primary" title="Sort Z-A" ng-click="groupList.sort(orderBy('-groupName'))">Z-A</button>
+        <br>
+        <br>
         <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" data-ng-repeat="group in groupList">
           <li><label><input type="checkbox" ng-model = "group.isChecked" ><a href="#" data-ng-bind="group.groupName" data-ng-click="showStudents(group)" >{{group.groupName}}</a></label></li>
           <!--we delete this part for now, we need to add it back later. ng-hide = "showGroupList"-->

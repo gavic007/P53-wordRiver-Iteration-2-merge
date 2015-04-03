@@ -100,7 +100,7 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
+        $http.post('/api/packs', {packName: ($scope.textField), tiles: []});
       }
       $scope.textField="";
     };
@@ -108,8 +108,8 @@ angular.module('WordRiverApp')
     $scope.addTile = function() {
       if ($scope.tileField.length >= 1) {
         var tiles =  {
-          wordName: ($scope.tileField).toLowerCase(),
-          wordType: ($scope.wordTypeField).toLowerCase()
+          wordName: ($scope.tileField),
+          wordType: ($scope.wordTypeField)
         };
         $scope.currentPack.tiles.push(tiles);
 
@@ -125,6 +125,14 @@ angular.module('WordRiverApp')
         $scope.showTileAdder = true;
         $scope.tileField = "";
 
+      }
+    };
+
+    $scope.confirmTileDelete = function (pack, index) {
+      this.pack = pack;
+      this.index = index;
+      if (confirm("Are you sure you want to delete this tile?") == true) {
+        $scope.deleteTile(pack, index);
       }
     };
 
@@ -160,14 +168,32 @@ angular.module('WordRiverApp')
       var checkedGroups = [];
 
       for(var i = 0; i < $scope.studentList.length; i++) {
-        for(var j = 0; j < $scope.contextPacks.length; j++) {
-          if($scope.studentList[i].isChecked) {
-            if($scope.contextPacks[j].isChecked) {
-              $scope.preventDuplication($scope.studentList[i].studentContextPackArray, $scope.contextPacks[j]);
+        for (var j = 0; j < $scope.contextPacks.length; j++) {
+          if ($scope.studentList[i].isChecked) {
+            if ($scope.contextPacks[j].isChecked) {
+
+              $scope.currentStudent = $scope.studentList[i];
+              $scope.preventDuplication($scope.currentStudent.studentContextPackArray, $scope.contextPacks[j]);
+
+              $http.patch('/api/students/' + $scope.currentStudent._id,
+                {studentContextPackArray: $scope.currentStudent.studentContextPackArray}
+              ).success(function(){
+                  console.log("Student got context packs!");
+                  console.log($scope.studentList[0].firstName+ ":" + $scope.studentList[0].studentContextPackArray[0].packName);
+                });
+
             }
           }
         }
       }
+
+        //$http.patch('/api/students/' + $scope.currentStudent._id,
+        //  {studentContextPackArray: $scope.currentStudent.studentContextPackArray}
+        //).success(function () {
+        //    console.log("Student got context packs!");
+        //    console.log($scope.studentList[i].studentContextPackArray);
+        //  });
+
       console.log($scope.studentContextPackArray);
       //Added functionality to assign Context Packs to Groups based on code above
       for (i = 0; i < $scope.groupList.length; i++) {
@@ -186,25 +212,26 @@ angular.module('WordRiverApp')
         }
       };
 
-    //$scope.orderBy = function (property) {
-    //  var sortOrder = 1;
-    //  if(property[0] === "-") {
-    //    sortOrder = -1;
-    //    property = property.substr(1);
-    //  }
-    //  return function (a,b) {
-    //    //var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-    //    var result = 0;
-    //    if (a[property] < b[property]) {
-    //      result = -1;
-    //    } else if (a[property] > b[property]) {
-    //      result=1;
-    //    } else {
-    //      result = 0;
-    //    }
-    //    return result * sortOrder;
-    //  }
-    //}
+    $scope.orderBy = function (property) {
+      var sortOrder = 1;
+      if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function (a,b) {
+        //var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        var result = 0;
+        if (a[property] < b[property]) {
+          result = -1;
+        } else if (a[property] > b[property]) {
+          result=1;
+        } else {
+          result = 0;
+        }
+        console.log("asdfasdfasdfasdf");
+        return result * sortOrder;
+      }
+    };
 
 
     $scope.toSortForContextPacks = "packName";
