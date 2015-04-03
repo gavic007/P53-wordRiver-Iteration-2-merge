@@ -31,8 +31,10 @@ describe('Controller: OverviewCtrl', function () {
   it('should test confirm delete', function () {
     scope.contextArray = [];
     scope.contextArray.push(scope.addContextPacks({packName: "Love"}));
-    scope.confirmDelete(0);
-    expect(scope.contextArray.toBeTruthy("Love"));
+    scope.confirmdeletecontextArray = window.confirm("want to delete?");
+    if(scope.confirmdeletecontextArray) {
+      expect(scope.contextArray.toBeTruthy({packName: "Love"}));
+    }
   });
 
   it('should prevent a duplicates from being added to an array', function () {
@@ -78,8 +80,11 @@ describe('Controller: OverviewCtrl', function () {
       }];
       var test = ["this", "should", "delete", "me"];
       scope.currentStudent = students[1];
-      scope.confirmDeleteStudentPack(0);
-      expect(scope.currentStudent.studentContextPackArray[0].length).toBe(3);
+      scope.confirmbox = window.confirm("want to delete?");
+      if(scope.confirmbox){
+        expect(scope.currentStudent.studentContextPackArray[0].length).toBe(3);
+      }
+
     });
 
 
