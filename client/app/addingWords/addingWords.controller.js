@@ -111,6 +111,12 @@ angular.module('WordRiverApp')
               $scope.preventDuplication($scope.students[i].studentWordArray, $scope.checkedWords[k]);
               console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
 
+              $http.patch('/api/students/' + $scope.students[i]._id,
+                {studentWordArray: $scope.students[i].studentWordArray}
+              ).success(function(){
+                console.log("The student got their words!");
+                  //console.log($scope.students[i] + ": " + $scope.students[i].studentWordArray);
+              });
 
             }
           }
@@ -123,6 +129,13 @@ angular.module('WordRiverApp')
         array.push(item)
       }
     };
+
+    $scope.confirmDeleteWords = function(index) {
+      this.index = index;
+      if (confirm("are you sure you want to remove this student's word?") == true) {
+        $scope.currentStudent.studentWordArray.splice(index, 1);
+      }
+    }
 
 
       //maybe we could make it so that we walk through the student array, see which ones match the checked ones in
