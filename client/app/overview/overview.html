@@ -43,15 +43,17 @@
             <button type="button" class="close" title="Delete Context Pack" data-toggle="tooltip" ng-click="confirmDeleteStudentPack($index)">&times;</button>
         </ul>
         <!-- this is where the individual student's words are going to be listed -->
+
       </div>
       <div ng-controller = "AddingWordsCtrl">
         <p>Individual words:</p>
-        <ul class="list-group">
-          <li class="list-group-item" ng-repeat="words in currentStudent.studentWordArray">
-            <button type="button" class="close" title="Delete Word" data-toggle="tooltip" ng-click="confirmDeleteWords($index)">&times;</button></li>
+        <!--<ul class="list-group">-->
+          <!--<li class="list-group-item" ng-repeat="words in currentStudent.studentWordArray">-->
+            <!--<button type="button" class="close" title="Delete Word" data-toggle="tooltip" ng-click="confirmDeleteWords($index)">&times;</button>{{words}}</li>-->
+        <!--</ul>-->
+        <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="words in currentStudent.studentWordArray">
+          <li>{{words}}<button type="button" class="close" title="Delete Tile" ng-click="confirmDeleteWords($index)">&times;</button></li>
         </ul>
-        <!--{{currentStudent}}-->
-        {{currentStudent.studentWordArray}}
       </div>
     </div>
 
