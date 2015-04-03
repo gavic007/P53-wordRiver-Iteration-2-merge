@@ -229,7 +229,7 @@ angular.module('WordRiverApp')
         } else {
           result = 0;
         }
-        console.log("asdfasdfasdfasdf");
+        console.log("Things Should show up");
         return result * sortOrder;
       }
     };
