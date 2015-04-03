@@ -87,6 +87,47 @@ describe('Controller: OverviewCtrl', function () {
 
     });
 
+  it('should sort an array of objects based on passed in object in ascending order', function () {
+    var students = [{
+      "firstName": "Liza",
+      "lastName": "Pratt"
+    },
+      {
+        "firstName": "Battle",
+        "lastName": "Whitaker"
+      },
+      {
+        "firstName": "Leanna",
+        "lastName": "Garrison"
+      },
+      {
+        "firstName": "Sherman",
+        "lastName": "Foster"
+      }];
+    students.sort(scope.orderBy("firstName"));
+    expect(students[0].firstName).toBe("Battle");
+  });
+
+  it('should sort an array of objects based on passed in -object in descending order', function () {
+    var students = [{
+      "firstName": "Liza",
+      "lastName": "Pratt"
+    },
+      {
+        "firstName": "Battle",
+        "lastName": "Whitaker"
+      },
+      {
+        "firstName": "Leanna",
+        "lastName": "Garrison"
+      },
+      {
+        "firstName": "Sherman",
+        "lastName": "Foster"
+      }];
+    students.sort(scope.orderBy("-firstName"));
+    expect(students[0].firstName).toBe("Sherman");
+  });
 
     //it('should attach a list of things to the scope', function () {
     //  $httpBackend.flush();
