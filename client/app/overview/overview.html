@@ -45,6 +45,10 @@
         <!-- this is where the individual student's words are going to be listed -->
         <div ng-controller = "AddingWordsCtrl">
           <p>Individual words:</p>
+          <button class="btn btn-primary" title="Sort A-Z" ng-click="currentStudent.studentWordArray.sort(orderBy('packName'))">A-Z</button>
+          <button class="btn btn-primary" title="Sort Z-A" ng-click="currentStudent.studentWordArray.sort(orderBy('-packName'))">Z-A</button>
+          <br>
+          <br>
           <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="words in currentStudent.studentWordArray">
             <li>{{words}}<button type="button" class="close" title="Delete Tile" ng-click="confirmDeleteWords($index)">&times;</button></li>
           </ul>
