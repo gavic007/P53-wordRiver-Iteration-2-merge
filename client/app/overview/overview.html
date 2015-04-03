@@ -44,13 +44,15 @@
         </ul>
         <!-- this is where the individual student's words are going to be listed -->
       </div>
-      <!--<div ng-controller = "AddingWordsCtrl">-->
-        <!--<ul class="list-group">-->
-          <!--<li class="list-group-item" ng-repeat="words in currentStudent.studentWordArray"></li>-->
-        <!--</ul>-->
+      <div ng-controller = "AddingWordsCtrl">
+        <p>Individual words:</p>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="words in currentStudent.studentWordArray">
+            <button type="button" class="close" title="Delete Word" data-toggle="tooltip" ng-click="confirmDeleteWords($index)">&times;</button></li>
+        </ul>
         <!--{{currentStudent}}-->
-        <!--{{currentStudent.studentWordArray}}-->
-      <!--</div>-->
+        {{currentStudent.studentWordArray}}
+      </div>
     </div>
 
 

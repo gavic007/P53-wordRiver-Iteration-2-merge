@@ -587,7 +587,7 @@ Student.find({}).remove(function() {
 
         }
       ],
-      "studentWordArray": ["bicycle"]
+      "studentWordArray": []
     },
     {
       "firstName": "Battle",
