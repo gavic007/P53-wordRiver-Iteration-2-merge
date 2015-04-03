@@ -65,6 +65,7 @@ angular.module('WordRiverApp')
     //This deletes just the context pack for students
     $scope.confirmDeleteStudentPack = function(index) {
       this.index = index;
+
       if (confirm("Are you sure you want to delete this student's Context Pack?") == true) {
         $scope.currentStudent.studentContextPackArray.splice(index, 1);
       }
