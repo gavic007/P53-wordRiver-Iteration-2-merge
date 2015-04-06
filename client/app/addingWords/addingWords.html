@@ -22,22 +22,8 @@
     <br>
     <br>
     <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">
-      <li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a ng-click="makeCurrentStudent(person)" href="/overview"> {{person.student}}</a></label></li>
+      <li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a href="/overview" ng-controller = "OverviewCtrl" ng-click = "studentInfo(person)"> {{person.student}}</a></label></li>
     </ul>
-    <!--<table>-->
-      <!--<tr>-->
-       <!--&lt;!&ndash;  <th>Grade</th> &ndash;&gt;-->
-        <!--<th>Name</th>-->
-      <!--</tr>-->
-      <!--<tr>-->
-       <!--&lt;!&ndash; <td> <div class="col-lg-12" ng-repeat="class in classList"><label><input type="checkbox" name="checkbox" value="value"></label> <li class="btn btn-default" ng-click="changeFilter(class)">{{class}}</li></div></td>  &ndash;&gt;-->
-        <!--<td>&lt;!&ndash; <div class="col-lg-12" ng-repeat="class in classList | filter: filterText" ng-show="true"> &ndash;&gt;-->
-          <!--<div class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">-->
-            <!--<li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a ng-click="makeCurrentStudent(person)" href="/overview"> {{person.student}}</a></label></li>-->
-          <!--</div>&lt;!&ndash;</div> &ndash;&gt;-->
-        <!--</td>-->
-      <!--</tr>-->
-    <!--</table>-->
   </div>
 
 
