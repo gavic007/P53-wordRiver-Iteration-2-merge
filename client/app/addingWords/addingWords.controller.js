@@ -132,8 +132,17 @@ angular.module('WordRiverApp')
 
     $scope.confirmDeleteStudentWord = function(index) {
       this.index = index;
+      console.log($scope.currentStudent.studentWordArray);
       if (confirm("are you sure you want to remove this student's word?") == true) {
         $scope.currentStudent.studentWordArray.splice(index, 1);
+        console.log($scope.currentStudent.studentWordArray);
+
+        $http.patch('/api/students/' + $scope.currentStudent._id,
+          {studentWordArray: $scope.currentStudent.studentWordArray}
+        ).success(function(){
+            console.log("The student got their words!");
+            //console.log($scope.students[i] + ": " + $scope.students[i].studentWordArray);
+          });
       }
     }
 

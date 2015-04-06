@@ -2,6 +2,11 @@
     margin: 20px 0;
 }
 
+html, body{
+  min-width: 100%;
+  min-height: 100%
+}
+
 #banner {
     border-bottom: none;
     margin-top: -20px;
@@ -20,6 +25,7 @@
     text-align: right;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #1475b2;
+
 }
 
 .footer {
