@@ -15,29 +15,36 @@
 
 <!--This is the student list -->
   <div class="col-md-3">
-    <a class="btn btn-default" href="/main"> Back to Home</a>
-    <table>
-      <tr>
-       <!--  <th>Grade</th> -->
-        <th>Name</th>
-      </tr>
-      <tr>
-       <!-- <td> <div class="col-lg-12" ng-repeat="class in classList"><label><input type="checkbox" name="checkbox" value="value"></label> <li class="btn btn-default" ng-click="changeFilter(class)">{{class}}</li></div></td>  -->
-        <td><!-- <div class="col-lg-12" ng-repeat="class in classList | filter: filterText" ng-show="true"> -->
-          <div class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">
-            <label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a class="btn btn-default" ng-click="makeCurrentStudent(person)" href="/overview"> {{person.student}}</a></label>
-          </div><!--</div> -->
-        </td>
-      </tr>
-    </table>
+    <h3 class="page-header">Students:</h3>
+    <p>Sort Students by last name:</p>
+    <button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
+    <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
+    <br>
+    <br>
+    <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">
+      <li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a ng-click="makeCurrentStudent(person)" href="/overview"> {{person.student}}</a></label></li>
+    </ul>
+    <!--<table>-->
+      <!--<tr>-->
+       <!--&lt;!&ndash;  <th>Grade</th> &ndash;&gt;-->
+        <!--<th>Name</th>-->
+      <!--</tr>-->
+      <!--<tr>-->
+       <!--&lt;!&ndash; <td> <div class="col-lg-12" ng-repeat="class in classList"><label><input type="checkbox" name="checkbox" value="value"></label> <li class="btn btn-default" ng-click="changeFilter(class)">{{class}}</li></div></td>  &ndash;&gt;-->
+        <!--<td>&lt;!&ndash; <div class="col-lg-12" ng-repeat="class in classList | filter: filterText" ng-show="true"> &ndash;&gt;-->
+          <!--<div class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">-->
+            <!--<li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a ng-click="makeCurrentStudent(person)" href="/overview"> {{person.student}}</a></label></li>-->
+          <!--</div>&lt;!&ndash;</div> &ndash;&gt;-->
+        <!--</td>-->
+      <!--</tr>-->
+    <!--</table>-->
   </div>
-
-  <input type="submit" value="Add word(s) to student(s)" ng-click="pushWordsToStudents()">
 
 
 
 <!--this is the word information -->
     <div class="col-md-6">
+      <h3 class="page-header">Words:</h3>
       <ul class="list-group">
         <li class="list-group-item">
           <form ng-submit="hasDuplicateValues()">
@@ -51,10 +58,15 @@
           <button type="button" class="close" title = "Delete Word" ng-click="confirmDeleteWord($index)">&times;</button></li>
       </ul>
     </div>
-</div>
 
+
+
+  <div class ="col-md-2">
+    <h3 class="page-header">Add:</h3>
+    <input type="submit" value="Add word(s) to student(s)" ng-click="pushWordsToStudents()">
+  </div>
 <!-- make check boxes push information, be able to maybe check and uncheck all (we can do this last), put tables by each other, make names seen right away, not just groups, and move garbage cans over-->
-
+</div>
 
 
 
