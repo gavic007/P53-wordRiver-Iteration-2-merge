@@ -143,7 +143,7 @@ angular.module('WordRiverApp')
         $http.patch('/api/students/' + $scope.currentStudent._id,
           {studentWordArray: $scope.currentStudent.studentWordArray}
         ).success(function(){
-            console.log("The student got their words!");
+            console.log("The student had a word removed!");
           });
       }
     }
