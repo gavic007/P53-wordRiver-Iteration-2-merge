@@ -18,10 +18,10 @@
     <h3 class="page-header">Students:</h3>
     <p>Sort Students by last name:</p>
     <button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
-    <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
+    <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('lastName')).reverse()">Z-A</button>
     <br>
     <br>
-    <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">
+    <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class" ng-show="true">
       <li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a href="/overview" ng-controller = "OverviewCtrl" ng-click = "studentInfo(person)"> {{person.student}}</a></label></li>
     </ul>
   </div>
