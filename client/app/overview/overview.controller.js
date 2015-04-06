@@ -165,19 +165,20 @@ angular.module('WordRiverApp')
       $scope.currentStudent = student;
     };
 
+    $scope.isObjectChecked = function(object) {
+      return object.isChecked;
+    };
+
     $scope.assignContextPack = function() {
       var checkedGroups = [];
 
       for(var i = 0; i < $scope.studentList.length; i++) {
         for (var j = 0; j < $scope.contextPacks.length; j++) {
-          if ($scope.studentList[i].isChecked) {
-            if ($scope.contextPacks[j].isChecked) {
-
-              $scope.currentStudent = $scope.studentList[i];
-              $scope.preventDuplication($scope.currentStudent.studentContextPackArray, $scope.contextPacks[j]);
-
-              $http.patch('/api/students/' + $scope.currentStudent._id,
-                {studentContextPackArray: $scope.currentStudent.studentContextPackArray}
+          if ($scope.isObjectChecked($scope.studentList[i])) {
+            if ($scope.isObjectChecked($scope.contextPacks[j])) {
+              $scope.preventDuplication($scope.studentList[i].studentContextPackArray, $scope.contextPacks[j]);
+              $http.patch('/api/students/' + $scope.studentList[i]._id,
+                {studentContextPackArray: $scope.studentList[i].studentContextPackArray}
               ).success(function(){
                   console.log("Student got context packs!");
                   console.log($scope.studentList[0].firstName+ ":" + $scope.studentList[0].studentContextPackArray[0].packName);
@@ -188,12 +189,6 @@ angular.module('WordRiverApp')
         }
       }
 
-        //$http.patch('/api/students/' + $scope.currentStudent._id,
-        //  {studentContextPackArray: $scope.currentStudent.studentContextPackArray}
-        //).success(function () {
-        //    console.log("Student got context packs!");
-        //    console.log($scope.studentList[i].studentContextPackArray);
-        //  });
 
       console.log($scope.studentContextPackArray);
       //Added functionality to assign Context Packs to Groups based on code above

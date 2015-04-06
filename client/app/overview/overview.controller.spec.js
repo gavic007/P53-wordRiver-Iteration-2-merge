@@ -129,6 +129,30 @@ describe('Controller: OverviewCtrl', function () {
     expect(students[0].firstName).toBe("Sherman");
   });
 
+  it('should return a true when passed in a checked object, false otherwise', function () {
+    var students = [{
+      "firstName": "Liza",
+      "lastName": "Pratt",
+      "isChecked": true
+    },
+      {
+        "firstName": "Battle",
+        "lastName": "Whitaker"
+      },
+      {
+        "firstName": "Leanna",
+        "lastName": "Garrison"
+      },
+      {
+        "firstName": "Sherman",
+        "lastName": "Foster"
+      }];
+
+    expect(scope.isObjectChecked(students[0])).toBeTruthy();
+    expect(scope.isObjectChecked(students[1])).toBeFalsy();
+  });
+
+
     //it('should attach a list of things to the scope', function () {
     //  $httpBackend.flush();
     //  expect(scope.awesomeThings.length).toBe(4);
