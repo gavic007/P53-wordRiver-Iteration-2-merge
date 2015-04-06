@@ -23,14 +23,14 @@ angular.module('WordRiverApp')
     $http.get('/api/students').success(function(studentList) {
       $scope.studentList = studentList;
       socket.syncUpdates('student', $scope.studentList);
-      console.log($scope.studentList[0].lastName);
+      //console.log($scope.studentList[0].lastName);
     });
 
     $scope.getGroupList = function(){
       $http.get('/api/users/me').success(function(user) {
         $scope.groupList = user.studentGroups;
         //socket.syncUpdates('group', $scope.groupList);
-        console.log($scope.groupList[0]);
+        //console.log($scope.groupList[0]);
       });
     };
 
@@ -65,11 +65,10 @@ angular.module('WordRiverApp')
     //This deletes just the context pack for students
     $scope.confirmDeleteStudentPack = function(index) {
       this.index = index;
-
       if (confirm("Are you sure you want to delete this student's Context Pack?") == true) {
         $scope.currentStudent.studentContextPackArray.splice(index, 1);
       }
-      console.log($scope.studentList[index]);
+      //console.log($scope.studentList[index]);
       //console.log($scope.studentList[index].studentContextPackArray[index]);
     };
 
@@ -83,7 +82,8 @@ angular.module('WordRiverApp')
 
     $scope.confirmDelete = function(index) {
       this.index = index;
-      if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].packName + "?") == true) {
+      if (confirm("Are you sure you want to delete ?") == true) {
+        //delete " + $scope.contextPacks[index].packName + "
         $scope.deletePack(index);
       }
     };
@@ -101,7 +101,7 @@ angular.module('WordRiverApp')
 
     $scope.addContextPacks = function () {
       if ($scope.textField.length >= 1) {
-        $http.post('/api/packs', {packName: ($scope.textField), tiles: []});
+        $http.post('/api/packs', {packName: ($scope.textField).toLowerCase(), tiles: []});
       }
       $scope.textField="";
     };
