@@ -130,9 +130,16 @@ angular.module('WordRiverApp')
       }
     };
 
-    $scope.confirmDeleteWords = function(index) {
+    $scope.confirmDeleteStudentWord = function(index) {
       this.index = index;
       if (confirm("are you sure you want to remove this student's word?") == true) {
+        $scope.currentStudent.studentWordArray.splice(index, 1);
+      }
+    }
+
+    $scope.confirmDeleteWord = function(index) {
+      this.index = index;
+      if (confirm("are you sure you want to remove this word?") == true) {
         $scope.currentStudent.studentWordArray.splice(index, 1);
       }
     }
