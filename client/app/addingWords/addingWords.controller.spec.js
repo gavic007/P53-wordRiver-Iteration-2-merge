@@ -44,7 +44,12 @@ describe('Controller: AddingWordsCtrl', function () {
     //console.log("Duplicates were not allowed");
   });
 
-
+  it('should allow something that is not a duplicate to be added', function () {
+    scope.allWords = ["stuff", "more", "people"];
+    scope.preventDuplication(scope.allWords, "bag");
+    expect(scope.allWords.length).toBe(4);
+    console.log("Non-duplicate can be added to array")
+  });
 
 
 });
