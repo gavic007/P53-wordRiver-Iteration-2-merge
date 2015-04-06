@@ -28,15 +28,21 @@ describe('Controller: AddingWordsCtrl', function () {
   });
 
   it('should test confirm delete', function() {
-    console.log("THIS IS OUR SHIT");
     scope.allWords = [];
     scope.allWords.push(scope.addWords("fun"));
     scope.confirmDeleteWord = window.confirm("are you sure you want to remove this word?");
     if(scope.confirmDeleteWord) {
       expect(scope.allWords.toBeTruthy("fun"));
-      console.log("THIS IS OUR SHIT");
+      console.log("Is this test working?");
     }
-  })
+  });
+
+  it('should prevent duplicates', function(){
+    scope.allWords = ["bear", "necklace", "ring"];
+    scope.preventDuplication(scope.allWords, "bear");
+    expect(scope.allWords.length).toBe(3);
+    //console.log("Duplicates were not allowed");
+  });
 
 
 

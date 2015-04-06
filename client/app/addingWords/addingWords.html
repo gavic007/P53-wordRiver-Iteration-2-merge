@@ -16,11 +16,17 @@
 <!--This is the student list -->
   <div class="col-md-3">
     <h3 class="page-header">Students:</h3>
+<<<<<<< Updated upstream
     <p>Sort Students by last name:</p>
     <!--<button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('name'))">A-Z</button>-->
     <!--<button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-name'))">Z-A</button>-->
     <button class="btn btn-primary" ng-click="toSortStudents = 'student'; orderforstudents = !orderforstudents">Sort Alphabetically</button>
 
+=======
+    <!--<p>Sort Students by last name:</p>-->
+    <!--<button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort()">A-Z</button>-->
+    <!--<button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort()">Z-A</button>-->
+>>>>>>> Stashed changes
     <br>
     <br>
     <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class | orderBy: toSortStudents : orderforstudents" ng-show="true">
@@ -39,7 +45,7 @@
             <input ng-model="wordField" type="text" size="50" placeholder="add a new item to the list!">
             <input type="submit" value="Add" class="btn btn-primary">
             <!--added the sort alphabetically button here-->
-            <button class="btn btn-primary" ng-click="toSort = 'words'; order = !order">Sort Alphabetically</button>
+            <!--<button class="btn btn-primary" ng-click="toSort = 'words'; order = !order">Sort Alphabetically</button>-->
           </form>
         </li>
         <li class="list-group-item" ng-repeat="test in allWords track by $index| orderBy: toSort:order"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label>

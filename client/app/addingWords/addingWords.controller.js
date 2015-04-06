@@ -265,7 +265,6 @@ angular.module('WordRiverApp')
       }
 
 
-
       //for(var i=0; i<$scope.students.length; i++){
       //  for(var j=0; j<$scope.classList.length; j++){
       //    if($scope.students[i].class == $scope.classList[j]){
