@@ -92,13 +92,6 @@ angular.module('WordRiverApp')
       }
     };
 
-    // I'm not sure if it is sticking in the database but it is getting to the studentWordArray now and pushing the words in there.
-    // big problem is that it does allow duplicate words to be entered into the studentWordArray (I tried to fix this at one point but
-    //it wouldnt continue through the function. I may have done it wrong.
-    //http://www.w3schools.com/jsref/jsref_string.asp
-    //http://stackoverflow.com/questions/3473639/best-way-to-convert-string-to-array-of-object-in-javascript
-    //http://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
-
     $scope.pushWordsToStudents = function () {
       //console.log("before the for statement in the pushWordsToStudents function");
       console.log($scope.students);
@@ -118,6 +111,13 @@ angular.module('WordRiverApp')
               $scope.preventDuplication($scope.students[i].studentWordArray, $scope.checkedWords[k]);
               console.log($scope.checkedStudents[j] + " <- checked student, student -> " + $scope.students[i] + " This is the student word array part!!!!!!!!!!!!      " + $scope.students[i].studentWordArray);
 
+              $http.patch('/api/students/' + $scope.students[i]._id,
+                {studentWordArray: $scope.students[i].studentWordArray}
+              ).success(function(){
+                console.log("The student got their words!");
+                  //console.log($scope.students[i] + ": " + $scope.students[i].studentWordArray);
+              });
+
             }
           }
         }
@@ -129,6 +129,20 @@ angular.module('WordRiverApp')
         array.push(item)
       }
     };
+
+    $scope.confirmDeleteStudentWord = function(index) {
+      this.index = index;
+      if (confirm("are you sure you want to remove this student's word?") == true) {
+        $scope.currentStudent.studentWordArray.splice(index, 1);
+      }
+    }
+
+    $scope.confirmDeleteWord = function(index) {
+      this.index = index;
+      if (confirm("are you sure you want to remove this word?") == true) {
+        $scope.currentStudent.studentWordArray.splice(index, 1);
+      }
+    }
 
 
       //maybe we could make it so that we walk through the student array, see which ones match the checked ones in

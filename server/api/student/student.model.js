@@ -7,7 +7,13 @@ var StudentSchema = new Schema({
   "firstName": String,
   "lastName": String,
   "id": String,
-  "studentContextPackArray": [String],
+  "studentContextPackArray": [{
+    "packName": String,
+    "tiles": [{
+      "wordName": String,
+      "wordType": String
+    }]
+  }],
   "studentWordArray": [String]
 });
 

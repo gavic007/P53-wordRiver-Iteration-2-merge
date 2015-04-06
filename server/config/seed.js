@@ -19,7 +19,7 @@ User.find({}).remove(function() {
       "password": "deserunt",
       "provider": "local",
       "contextPacks": [{
-        "contextName": "nouns",
+        "contextName": "Nouns",
         "contents":[
           {"wordName": "house",
             "wordType": "noun",
@@ -130,161 +130,54 @@ User.find({}).remove(function() {
 
       "studentGroups": [
         {
-          "groupName": "aliquip",
+          "groupName": "A-Team",
           "students": [
             {
-              "name": "Banks"
+              "name": "Liza P."
             },
             {
-              "name": "Wiley"
-            },
-            {
-              "name": "Juliana"
-            },
-            {
-              "name": "Allen"
-            },
-            {
-              "name": "Mayo"
-            },
-            {
-              "name": "Keller"
+              "name": "Shanna B."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "anim",
+          "groupName": "B-Team",
           "students": [
             {
-              "name": "Cochran"
+              "name": "Battle W."
             },
             {
-              "name": "Vasquez"
-            },
-            {
-              "name": "Rose"
-            },
-            {
-              "name": "Lynne"
-            },
-            {
-              "name": "Castillo"
-            },
-            {
-              "name": "Lora"
+              "name": "Calderon D."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "do",
+          "groupName": "C-Team",
           "students": [
             {
-              "name": "Angelica"
+              "name": "Leanna G."
             },
             {
-              "name": "Slater"
-            },
-            {
-              "name": "Mays"
-            },
-            {
-              "name": "Jean"
-            },
-            {
-              "name": "Mcknight"
-            },
-            {
-              "name": "Mckee"
+              "name": "Cassie R."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
         {
-          "groupName": "officia",
+          "groupName": "D-Team",
           "students": [
             {
-              "name": "Stafford"
-            },
-            {
-              "name": "Bishop"
-            },
-            {
-              "name": "Liliana"
-            },
-            {
-              "name": "Lloyd"
-            },
-            {
-              "name": "Beasley"
-            },
-            {
-              "name": "Peggy"
+              "name": "Sherman F."
             }
           ],
           "groupContextPackArray": [],
           "groupWordArray": []
         },
-        {
-          "groupName": "exercitation",
-          "students": [
-            {
-              "name": "Erickson"
-            },
-            {
-              "name": "Tracie"
-            },
-            {
-              "name": "Leila"
-            },
-            {
-              "name": "Lacy"
-            },
-            {
-              "name": "Jolene"
-            },
-            {
-              "name": "Chen"
-            },
-            {
-              "name": "Hammond"
-            }
-          ],
-          "groupContextPackArray": [],
-          "groupWordArray": []
-        },
-        {
-          "groupName": "ut",
-          "students": [
-            {
-              "name": "Saunders"
-            },
-            {
-              "name": "Geraldine"
-            },
-            {
-              "name": "Bender"
-            },
-            {
-              "name": "Cantrell"
-            },
-            {
-              "name": "Miles"
-            },
-            {
-              "name": "Gilliam"
-            },
-            {
-              "name": "Mcfadden"
-            }
-          ],
-          "groupContextPackArray": [],
-          "groupWordArray": []
-        }
       ]
     },
     {
@@ -523,49 +416,492 @@ Student.find({}).remove(function() {
       "firstName": "Liza",
       "lastName": "Pratt",
       "id": "0001",
-      "studentContextPackArray": [],
-      "studentWordArray": ["bicycle"]
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+      "tiles": [{
+      "wordName": "the",
+      "wordType": "Sight-word"},
+        {"wordName": "on",
+        "wordType": "Sight-word"},
+        {"wordName": "and",
+          "wordType": "Sight-word"},
+        {"wordName": "of",
+          "wordType": "Sight-word"},
+        {"wordName": "a",
+          "wordType": "Sight-word"},
+        {"wordName": "in",
+          "wordType": "Sight-word"}
+      ]},
+        {"packName": "Nouns",
+        "tiles":[
+          {"wordName": "house",
+            "wordType": "noun"},
+          {"wordName": "jump",
+            "wordType": "noun"},
+          {"wordName": "walk",
+            "wordType": "noun"}
+        ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        }
+      ],
+      "studentWordArray": []
     },
     {
       "firstName": "Battle",
       "lastName": "Whitaker",
       "id": "0002",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+      "tiles":[
+      {"wordName": "house",
+        "wordType": "noun"},
+      {"wordName": "jump",
+        "wordType": "noun"},
+      {"wordName": "walk",
+        "wordType": "noun"}
+    ]},
+  {
+    "packName": "Verbs/Actions",
+    "tiles":[
+      {wordName: "run",
+        wordType: "verb"},
+      {wordName: "jump",
+        wordType: "verb"},
+      {wordName: "walk",
+        wordType: "verb"},
+      {wordName: "talk",
+        wordType: "verb"},
+      {wordName: "swim",
+        wordType: "verb"},
+      {wordName: "talk",
+        wordType: "verb"},
+      {wordName: "climb",
+        wordType: "verb"}
+    ]},
+  {
+    "packName": "Animals",
+    "tiles":[
+      {wordName: "Cat",
+        wordType: "noun"},
+      {wordName: "Dog",
+        wordType: "noun"},
+      {wordName: "Zebra",
+        wordType: "noun"},
+      {wordName: "Llama",
+        wordType: "noun"},
+      {wordName: "Horse",
+        wordType: "noun"},
+      {wordName: "Bird",
+        wordType: "noun"},
+      {wordName: "Lizard",
+        wordType: "noun"}
+    ]
+
+  }
+
+      ],
       "studentWordArray": []
     },
     {
       "firstName": "Leanna",
       "lastName": "Garrison",
       "id": "0003",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+          "tiles":[
+            {"wordName": "house",
+              "wordType": "noun"},
+            {"wordName": "jump",
+              "wordType": "noun"},
+            {"wordName": "walk",
+              "wordType": "noun"}
+          ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        } ],
       "studentWordArray": []
     },
     {
       "firstName": "Sherman",
       "lastName": "Foster",
       "id": "0004",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+          "tiles":[
+            {"wordName": "house",
+              "wordType": "noun"},
+            {"wordName": "jump",
+              "wordType": "noun"},
+            {"wordName": "walk",
+              "wordType": "noun"}
+          ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        } ],
       "studentWordArray": []
     },
     {
       "firstName": "Cassie",
       "lastName": "Ramos",
       "id": "0005",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+          "tiles":[
+            {"wordName": "house",
+              "wordType": "noun"},
+            {"wordName": "jump",
+              "wordType": "noun"},
+            {"wordName": "walk",
+              "wordType": "noun"}
+          ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        } ],
       "studentWordArray": []
     },
     {
       "firstName": "Calderon",
       "lastName": "Daniel",
       "id": "0006",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+          "tiles":[
+            {"wordName": "house",
+              "wordType": "noun"},
+            {"wordName": "jump",
+              "wordType": "noun"},
+            {"wordName": "walk",
+              "wordType": "noun"}
+          ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        } ],
       "studentWordArray": []
     },
     {
       "firstName": "Shanna",
       "lastName": "Boyle",
       "id": "0007",
-      "studentContextPackArray": [],
+      "studentContextPackArray": [{
+        "packName": "Default Pack",
+        "tiles": [{
+          "wordName": "the",
+          "wordType": "Sight-word"},
+          {"wordName": "on",
+            "wordType": "Sight-word"},
+          {"wordName": "and",
+            "wordType": "Sight-word"},
+          {"wordName": "of",
+            "wordType": "Sight-word"},
+          {"wordName": "a",
+            "wordType": "Sight-word"},
+          {"wordName": "in",
+            "wordType": "Sight-word"}
+        ]
+      },
+        {"packName": "Nouns",
+          "tiles":[
+            {"wordName": "house",
+              "wordType": "noun"},
+            {"wordName": "jump",
+              "wordType": "noun"},
+            {"wordName": "walk",
+              "wordType": "noun"}
+          ]},
+        {
+          "packName": "Verbs/Actions",
+          "tiles":[
+            {wordName: "run",
+              wordType: "verb"},
+            {wordName: "jump",
+              wordType: "verb"},
+            {wordName: "walk",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "swim",
+              wordType: "verb"},
+            {wordName: "talk",
+              wordType: "verb"},
+            {wordName: "climb",
+              wordType: "verb"}
+          ]},
+        {
+          "packName": "Animals",
+          "tiles":[
+            {wordName: "Cat",
+              wordType: "noun"},
+            {wordName: "Dog",
+              wordType: "noun"},
+            {wordName: "Zebra",
+              wordType: "noun"},
+            {wordName: "Llama",
+              wordType: "noun"},
+            {wordName: "Horse",
+              wordType: "noun"},
+            {wordName: "Bird",
+              wordType: "noun"},
+            {wordName: "Lizard",
+              wordType: "noun"}
+          ]
+
+        } ],
       "studentWordArray": []
     }
 

@@ -1,66 +1,58 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
+
+
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Add Words!</h1>
   </div>
 </header>
 
-<div class="container">
-  <a class="btn btn-default" href="/main"> Back to Home</a>
-  <hr>
-  <!--<div class="container">-->
-  <ul class="list-group">
-    <li class="list-group-item">
-      <form ng-submit="hasDuplicateValues()">
-        <input ng-model="wordField" type="text" size="50" placeholder="add a new item to the list!">
-        <input type="submit" value="Add" class="btn btn-primary">
-
-        <!--added the sort alphabetically button here-->
-        <button class="btn btn-primary" ng-click="toSort = 'words'; order = !order">Sort Alphabetically</button>
-
-        <!--<span class="floatRight">Items in this list: {{itemsInList()}}</span> -->
-      </form>
-    </li>
-    <!--</ul>-->
-  <!--<ul>-->
-    <!--<form name="addingWordsForm" action="checkboxes.asp" method="post">-->
-      <!--<span><input type = "button" name ="CheckAll" value="Check All"></span>-->
-    <!--added the sort alphabetically function here-->
-    <li class="list-group-item" ng-repeat="test in allWords | orderBy: toSort:order"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label> <span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>
-
-      <!--<li class="list-group-item" ng-repeat="test in data">{{test.weight}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeData($index)"></span></li>-->
-    <!--</form>-->
-  </ul>
-  <!--</div>-->
-<!--</div>-->
-
-
-
+<div class="container-fluid">
+  <div class = "row">
 <!--<div class="container">-->
-  <div class="row">
-    <table>
-      <tr>
-       <!--  <th>Grade</th> -->
-        <th>Name</th>
-      </tr>
-      <tr>
-       <!-- <td> <div class="col-lg-12" ng-repeat="class in classList"><label><input type="checkbox" name="checkbox" value="value"></label> <li class="btn btn-default" ng-click="changeFilter(class)">{{class}}</li></div></td>  -->
-        <td><!-- <div class="col-lg-12" ng-repeat="class in classList | filter: filterText" ng-show="true"> --><div class="col-lg-12" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true"><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a class="btn btn-default" ng-click="makeCurrentStudent(person)" href="/profile"> {{person.student}}</a></label></div><!--</div> -->
-        </td>
-      </tr>
-    </table>
+
+
+<!--This is the student list -->
+  <div class="col-md-3">
+    <h3 class="page-header">Students:</h3>
+    <p>Sort Students by last name:</p>
+    <button class="btn btn-primary" title="Sort A-Z" ng-click="studentList.sort(orderBy('lastName'))">A-Z</button>
+    <button class="btn btn-primary" title="Sort Z-A" ng-click="studentList.sort(orderBy('-lastName'))">Z-A</button>
+    <br>
+    <br>
+    <ul class="nav nav-tabs nav-stacked" ng-repeat="person in studentList | filter: class |orderBy: 'student'" ng-show="true">
+      <li><label><input type="checkbox" value="studentChecked"  ng-click="allCheckedStudents(person)"><a href="/overview" ng-controller = "OverviewCtrl" ng-click = "studentInfo(person)"> {{person.student}}</a></label></li>
+    </ul>
   </div>
-  <form ng-submit="wordsBeingSent()">
-  <input type="submit" value="Add word(s) to student(s)" ng-click="pushWordsToStudents()">
 
 
-  </form>
-<!--</div>-->
-</div>
 
+<!--this is the word information -->
+    <div class="col-md-6">
+      <h3 class="page-header">Words:</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <form ng-submit="hasDuplicateValues()">
+            <input ng-model="wordField" type="text" size="50" placeholder="add a new item to the list!">
+            <input type="submit" value="Add" class="btn btn-primary">
+            <!--added the sort alphabetically button here-->
+            <button class="btn btn-primary" ng-click="toSort = 'words'; order = !order">Sort Alphabetically</button>
+          </form>
+        </li>
+        <li class="list-group-item" ng-repeat="test in allWords track by $index| orderBy: toSort:order"><label><input type="checkbox" value="isChecked" ng-click="allCheckedWords(test)"> {{test.words}}</label>
+          <button type="button" class="close" title = "Delete Word" ng-click="confirmDeleteWord($index)">&times;</button></li>
+      </ul>
+    </div>
+
+
+
+  <div class ="col-md-2">
+    <h3 class="page-header">Add:</h3>
+    <input type="submit" value="Add word(s) to student(s)" ng-click="pushWordsToStudents()">
+  </div>
 <!-- make check boxes push information, be able to maybe check and uncheck all (we can do this last), put tables by each other, make names seen right away, not just groups, and move garbage cans over-->
-
+</div>
 
 
 
