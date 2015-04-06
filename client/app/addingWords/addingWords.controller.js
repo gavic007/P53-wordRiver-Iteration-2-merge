@@ -142,7 +142,6 @@ angular.module('WordRiverApp')
           {studentWordArray: $scope.currentStudent.studentWordArray}
         ).success(function(){
             console.log("The student got their words!");
-            //console.log($scope.students[i] + ": " + $scope.students[i].studentWordArray);
           });
       }
     }
@@ -283,6 +282,8 @@ angular.module('WordRiverApp')
     $scope.makeCurrentStudent = function(student){
       $rootScope.currentStudent = student;
     };
+
+
 
   //});
 
