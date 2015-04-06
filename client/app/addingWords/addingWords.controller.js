@@ -130,17 +130,31 @@ angular.module('WordRiverApp')
       }
     };
 
+    // This is deleting a word for an individual student in the overview page
     $scope.confirmDeleteStudentWord = function(index) {
       this.index = index;
+      console.log($scope.currentStudent.studentWordArray);
       if (confirm("are you sure you want to remove this student's word?") == true) {
         $scope.currentStudent.studentWordArray.splice(index, 1);
+        console.log($scope.currentStudent.studentWordArray);
+
+        $http.patch('/api/students/' + $scope.currentStudent._id,
+          {studentWordArray: $scope.currentStudent.studentWordArray}
+        ).success(function(){
+            console.log("The student got their words!");
+          });
       }
     }
 
+    // this is deleting a word on the adding word page. it is just a word and the words assigned
+    //to individual students are not being deleted
     $scope.confirmDeleteWord = function(index) {
       this.index = index;
       if (confirm("are you sure you want to remove this word?") == true) {
-        $scope.currentStudent.studentWordArray.splice(index, 1);
+        $http.delete('api/AddingWordsDatabases/' + $scope.allWords[index]._id).success(function () {
+          $scope.getWords();
+            //console.log($scope.students[i] + ": " + $scope.students[i].studentWordArray);
+          });
       }
     }
 
@@ -268,6 +282,8 @@ angular.module('WordRiverApp')
     $scope.makeCurrentStudent = function(student){
       $rootScope.currentStudent = student;
     };
+
+
 
   //});
 
