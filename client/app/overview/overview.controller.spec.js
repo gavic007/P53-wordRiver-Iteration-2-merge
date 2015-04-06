@@ -152,7 +152,28 @@ describe('Controller: OverviewCtrl', function () {
     expect(scope.isObjectChecked(students[1])).toBeFalsy();
   });
 
-
+  it('should show a list of students', function () {
+    var students = [{
+      "name": "Liza",
+      "lastName": "Pratt"
+    },
+      {
+        "name": "Battle",
+        "lastName": "Whitaker"
+      },
+      {
+        "name": "Leanna",
+        "lastName": "Garrison"
+      },
+      {
+        "name": "Sherman",
+        "lastName": "Foster"
+      }];
+    scope.studentListInGroup = [
+      {name:String}
+      ];
+    expect(scope.studentListInGroup.length).toBe(1);
+  });
     //it('should attach a list of things to the scope', function () {
     //  $httpBackend.flush();
     //  expect(scope.awesomeThings.length).toBe(4);

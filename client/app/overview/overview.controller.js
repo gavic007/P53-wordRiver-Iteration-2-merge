@@ -138,7 +138,7 @@ angular.module('WordRiverApp')
     };
 
     $scope.deleteTile = function(pack, index) {
-      pack.tiles.splice(index, 1)
+      pack.tiles.splice(index, 1);
       $http.patch('/api/packs/' + pack._id,
         {tiles: pack.tiles}
       ).success(function() {
