@@ -49,6 +49,7 @@ describe('Controller: OverviewCtrl', function () {
     expect(test.length).toBe(4);
   });
 
+
   it('should allow for deletion of a context pack', function () {
     var students = [{
       "firstName": "Liza",
