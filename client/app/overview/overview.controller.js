@@ -93,8 +93,7 @@ angular.module('WordRiverApp')
 
     $scope.confirmDelete = function(index) {
       this.index = index;
-      if (confirm("Are you sure you want to delete ?") == true) {
-        //delete " + $scope.contextPacks[index].packName + "
+      if (confirm("Are you sure you want to delete " + $scope.contextPacks[index].packName + "?") == true) {
         $scope.deletePack(index);
       }
     };
